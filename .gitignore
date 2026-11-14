@@ -6,6 +6,7 @@ node_modules/
 dist/
 dist-ssr/
 *.local
+*.tsbuildinfo
 
 # ── Entorno Python y Cachés de Datos ──────────────────────────────────────────
 __pycache__/

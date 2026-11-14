@@ -14,7 +14,7 @@ Este documento define las reglas operativas estrictas que todo agente de IA (Gem
 
 ## 2. Desarrollo, Entorno, SDD (Spec Kit) y Aislamiento de Referencias
 
-- **Gestor de Paquetes Node:** Utilizar **`pnpm` exclusivamente** (`pnpm install`, `pnpm dev`, `pnpm build`) sobre Node.js `v24.x` (`pnpm 12.15.0`). **Prohibido usar `npm` o `yarn`**.
+- **Gestor de Paquetes Node:** Utilizar **`pnpm` exclusivamente** (`pnpm install`, `pnpm dev`, `pnpm build`) sobre Node.js `v24.x` (`pnpm 12.21.0`). **Prohibido usar `npm` o `yarn`**.
 - **Metodología SDD (Spec-Driven Development) con Spec Kit:**
   - El proyecto utiliza **Spec Kit (`specify-cli`)** bajo el flujo SDD: `constitution` $\rightarrow$ `specify` $\rightarrow$ `clarify` $\rightarrow$ `plan` $\rightarrow$ `tasks` $\rightarrow$ `analyze` $\rightarrow$ `implement`.
 - **Git Hooks Profesionales con Husky:**

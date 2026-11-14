@@ -8,7 +8,7 @@
 - **User Interface Bilinguality:** The web application UI defaults to English for global judging compliance, with seamless client-side bilingual toggling (`EN` / `ES`).
 
 ### II. Package Management & Toolchain Strictness (NON-NEGOTIABLE)
-- **Node Package Manager:** Use **`pnpm` exclusively** (`pnpm install`, `pnpm dev`, `pnpm build`, `pnpm test:run`) on Node.js `v24.x` (`pnpm 12.15.0`).
+- **Node Package Manager:** Use **`pnpm` exclusively** (`pnpm install`, `pnpm dev`, `pnpm build`, `pnpm test:run`) on Node.js `v24.x` (`pnpm 12.21.0`).
 - **Prohibited Tools:** Usage of `npm` or `yarn` is strictly forbidden. Lockfile integrity (`pnpm-lock.yaml`) must be preserved.
 - **Python Scientific Pipeline:** Python data processing scripts (`scripts/build_harmonized_cubes.py`) must execute cleanly on Python `3.13.x` with explicit typing and reproducible dependencies (`uv`).
 

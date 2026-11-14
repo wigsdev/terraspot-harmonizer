@@ -2,7 +2,7 @@
 
 * **Project Name:** TerraSpot Harmonizer
 * **Official NASA Challenge:** Challenge 15 — *Harmonization of MODIS and VIIRS Hot Spots*
-* **Verified Local Environment:** Linux • Node.js `v24.20.0` • pnpm `12.15.0` • Python `3.13.5` • Git `2.47.3`
+* **Verified Local Environment:** Linux • Node.js `v24.20.0` • pnpm `12.21.0` • Python `3.13.5` • Git `2.47.3`
 * **Document Version:** 1.0
 
 ---
@@ -40,12 +40,14 @@ Selected for **high execution speed, local environment compatibility, zero propr
 ---
 
 ### B. Frontend Frameworks & UI Architecture
-1. **React (`19.x`) + Vite (`6.x`):**
-   * **Role:** Fast reactive component rendering and optimized bundle delivery.
+1. **React (`19.x`, v19.3+) + Vite (`8.x`, v8.3+ with Rolldown):**
+   * **Role:** Sub-second reactive component rendering and native Rolldown bundle delivery.
    * **Rationale:** Instant DOM updates when toggling AOIs, dates, or color scales at 60 FPS.
-2. **Tailwind CSS (`v4`):**
-   * **Role:** Aerospace dark-theme design system (*NASA Earth Information Center / Mission Control* aesthetic: `#0B0F17`, `#131B2E`).
-3. **Lucide React (`lucide-react`):**
+2. **TypeScript (`7.x`, v7.0+):**
+   * **Role:** High-performance native TypeScript engine enforcing strict contracts across the harmonization pipeline.
+3. **Tailwind CSS (`4.x`, v4.3+ via `@tailwindcss/vite`):**
+   * **Role:** Aerospace dark-theme design system (*NASA Earth Information Center / Mission Control* aesthetic: `#0B0F17`, `#131B2E`) without legacy PostCSS or `tailwind.config.js`.
+4. **Lucide React (`lucide-react`):**
    * **Role:** Consistent technical icon set for satellite orbits, thermal alerts, layers, filters, and exports.
 
 ---
@@ -88,7 +90,7 @@ Selected for **high execution speed, local environment compatibility, zero propr
 ---
 
 ### F. DevOps, Testing, Governance & Deployment
-1. **pnpm (`12.15.0`):**
+1. **pnpm (`12.21.0`):**
    * Strict package management ensuring reproducible dependency resolution.
 2. **Vitest:**
    * Sub-second unit testing framework validating the mathematical harmonization algorithm and color ramps.
@@ -106,12 +108,12 @@ Selected for **high execution speed, local environment compatibility, zero propr
 │                    TERRASPOT HARMONIZER TECHNOLOGY STACK                    │
 ├─────────────────────────┬───────────────────────────────────────────────────┤
 │ 🐍 Data & Science       │ Python 3.13 + uv + TerraSpot 4-Stage Engine       │
-│ 💻 Frontend Core        │ React 19 + TypeScript 5.7+ + Vite 6 + pnpm        │
+│ 💻 Frontend Core        │ React 19 + TypeScript 7+ + Vite 8 + pnpm 12       │
 │ 🎨 UI & Accessibility   │ Tailwind CSS v4 + Lucide + Inferno/Viridis Scales │
 │ 🗺️ WebGIS & Cartography │ Leaflet + React-Leaflet + NASA GIBS WMTS          │
 │ 📊 Visual Analytics     │ Custom Scalable Matrix + Recharts                 │
 │ 🛰️ Official NASA Data   │ NASA FIRMS (MODIS C6.1 1km + VIIRS C2 375m)       │
-│ 🧪 Testing & CI         │ Vitest + Husky + GitHub Actions                   │
+│ 🧪 Testing & CI         │ Vitest 5 + Husky 9 + GitHub Actions               │
 │ 🚀 Hosting & Versioning │ GitHub (Public) + Vercel / GitHub Pages (HTTPS)   │
 └─────────────────────────┴───────────────────────────────────────────────────┘
 ```

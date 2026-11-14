@@ -11,12 +11,26 @@ and this project adheres to [Semantic Versioning (SemVer 2.0.0)](https://semver.
 
 ### Planned
 
-- **Sprint 1 (`T-02`):** Web application scaffolding with React 19, TypeScript 5.7+, Vite 6, Tailwind CSS v4, Vitest, and Husky git hooks.
 - **Sprint 1 (`T-03`):** Scientific Python pipeline (`scripts/build_harmonized_cubes.py`) for NASA FIRMS historical archive processing (MODIS C6.1 and VIIRS 375m C2, 2000–2026).
 - **Sprint 1 (`T-04`):** Pure TypeScript mathematical engine (`harmonizer.ts`) implementing the *TerraSpot 4-Stage* algorithm and accessible color scales (`colorRamps.ts`).
 - **Sprint 2 (`T-05`, `T-06`):** *NASA Mission Control* design system, KPI summary cards, and interactive Leaflet WebGIS canvas with bounding box drawing and NASA GIBS WMTS satellite tile overlays.
 - **Sprint 3 (`T-07`, `T-08`, `T-09`, `T-10`):** 27-year × 12-month *Burning Activity Calendar Matrix*, climatological anomaly curves, sensor audit view, agricultural vs. wildfire regime classifier, and standardized CSV exporter/uploader.
 - **Sprint 4 (`T-11`, `T-12`):** Public HTTPS edge deployment, executive 7-slide presentation deck in English, and final `1.0.0` release.
+
+---
+
+## [0.2.0] - 2026-11-14
+
+### Added
+
+- **Web Project Scaffolding (`T-02`):** Initialized modern frontend architecture with Vite 8 (Rolldown native bundler), React 19.3.1, TypeScript 7.0.2, and pnpm 12.21.0 on Node.js 24 LTS.
+- **Tailwind CSS v4 Design Tokens (`T-02`):** Integrated `@tailwindcss/vite` with CSS-first design tokens in `src/index.css` (`#0B0F17`, `#131B2E`, `#FF6F00`, `#00E5FF`, `#10B981`) matching `docs/design-system.md`.
+- **Vitest 5 Suite (`T-02`):** Configured Vitest 5.1.0 with `jsdom` and `@testing-library/react`, delivering unit smoke tests (`tests/smoke.test.ts`) and component render tests (`tests/App.test.tsx`).
+- **Husky 9 Quality Gates (`T-02`):** Configured `.husky/pre-commit` (validating `pnpm typecheck`, `pnpm test:run`, and `pnpm build`) and `.husky/commit-msg` (enforcing Conventional Commits v1.0.0).
+- **Architecture Contracts (`T-02`):** Created canonical TypeScript data schemas in `src/types/` (`firms.ts`, `harmonization.ts`, `region.ts`, `palette.ts`, `index.ts`).
+- **Application Shell & Mobile-First Responsive Layout (`T-02`):** Implemented Aerospace Mission Control layout in `src/App.tsx`, `index.html`, and `public/favicon.svg` featuring a fluid $1 \rightarrow 2 \rightarrow 4$ column progression across mobile (360–425px), tablet (768px), and desktop ($\ge 1024\text{px}$) with touch-accessible controls.
+
+---
 
 ---
 

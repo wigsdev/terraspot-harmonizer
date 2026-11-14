@@ -4,7 +4,8 @@
 [![Challenge 15](https://img.shields.io/badge/Challenge%2015-MODIS%20%26%20VIIRS%20Harmonization-FF6F00?style=for-the-badge)](https://www.spaceappschallenge.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 [![React 19](https://img.shields.io/badge/React-19.x-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.7+-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-7.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-8.x%20Rolldown-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vite.dev/)
 [![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS-v4.0-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![pnpm](https://img.shields.io/badge/pnpm-12.x-F69220?style=for-the-badge&logo=pnpm&logoColor=white)](https://pnpm.io/)
 [![Vitest](https://img.shields.io/badge/Vitest-Unit%20Tests-729B1B?style=for-the-badge&logo=vitest&logoColor=white)](https://vitest.dev/)
@@ -110,7 +111,7 @@ All architectural contracts, scientific methodologies, and operational governanc
 
 ### Prerequisites
 - **Node.js** `>= 20.x` (tested on `v24.20.0`)
-- **pnpm** `>= 10.x` (tested on `12.15.0` — *npm/yarn prohibited*)
+- **pnpm** `>= 10.x` (tested on `12.21.0` — *npm/yarn prohibited*)
 - **Python** `>= 3.10` (tested on `3.13.5` with `uv`)
 
 ### Installation & Execution

@@ -12,7 +12,7 @@ Before addressing any task or block, developers and agents must verify local exe
 
 ### 0.1 Environment Prerequisites
 - **Node.js**: `v24.x` (verified on `v24.20.0`)
-- **Package Manager**: **`pnpm` v12.15.0 exclusively**. *(Do not use `npm` or `yarn`)*.
+- **Package Manager**: **`pnpm` v12.21.0 exclusively**. *(Do not use `npm` or `yarn`)*.
 - **Python**: `3.13.x` with `uv` for high-performance data processing.
 - **Spec Kit**: `specify-cli` `v1.4.1.dev0` integrated with Antigravity skills.
 

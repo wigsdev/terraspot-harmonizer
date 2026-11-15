@@ -120,10 +120,10 @@ Establish software engineering governance and repository foundations. Draft the 
 Initialize the base application using `pnpm`, Vite 6, React 19, strict TypeScript, and **Vitest**. Configure **Spec Kit (SDD)** skills and workflows, install **Husky** (`.husky/pre-commit` and `.husky/commit-msg`) to enforce Conventional Commits and build validation, and configure **GitHub Actions CI/CD** (`.github/workflows/ci.yml`). Install core dependencies (`tailwindcss`, `lucide-react`, `leaflet`, `react-leaflet`, `recharts`, `vitest`).
 
 **Acceptance Criteria:**
-- [ ] `package.json` managed via `pnpm` (`v0.2.0`) with scripts for `dev`, `build`, `preview`, `typecheck`, `test:run`, and `prepare`.
-- [ ] Operational **Husky** hooks validating commit messages (*Conventional Commits*), `.reference/` isolation, and clean builds.
-- [ ] `.github/workflows/ci.yml` and **Spec Kit (SDD)** initialized.
-- [ ] Initial compilation verified with `pnpm build` with zero warnings.
+- [x] `package.json` managed via `pnpm` (`v0.2.0`) with scripts for `dev`, `build`, `preview`, `typecheck`, `test:run`, and `prepare`.
+- [x] Operational **Husky** hooks validating commit messages (*Conventional Commits*), `.reference/` isolation, and clean builds.
+- [x] `.github/workflows/ci.yml` and **Spec Kit (SDD)** initialized.
+- [x] Initial compilation verified with `pnpm build` with zero warnings.
 
 ---
 
@@ -140,9 +140,9 @@ Initialize the base application using `pnpm`, Vite 6, React 19, strict TypeScrip
 Develop the Python scientific pipeline script (`scripts/build_harmonized_cubes.py`) to process NASA FIRMS historical time series (MODIS C6.1 at 1 km from 2000 and VIIRS C2 at 375 m from 2012 through 2026) for the 5 benchmark regions (**Huánuco & Peruvian Andes**, **Southern Amazon Basin**, **Paraná River Delta / CONAE**, **California**, and **New South Wales - Australia**), plus a spatial grid supporting arbitrary bounding box queries. Generate a sample raw FIRMS CSV file for custom upload demonstration (Requirements R1, R5, R6).
 
 **Acceptance Criteria:**
-- [ ] `scripts/build_harmonized_cubes.py` executes without errors on Python 3.13 and outputs data to `public/data/`.
-- [ ] Generates monthly aggregated series from `2000-01` to `2026-10` with raw MODIS/VIIRS counts, Active Fire Cell-Days (AFCD), mean FRP (MW), and night fraction.
-- [ ] Generates `public/data/sample_firms_huanuco.csv` matching NASA FIRMS schema for custom upload verification.
+- [x] `scripts/build_harmonized_cubes.py` executes without errors on Python 3.13 and outputs data to `public/data/`.
+- [x] Generates monthly aggregated series from `2000-01` to `2026-10` with raw MODIS/VIIRS counts, Active Fire Cell-Days (AFCD), mean FRP (MW), and night fraction.
+- [x] Generates `public/data/sample_firms_huanuco.csv` matching NASA FIRMS schema for custom upload verification.
 
 ---
 
@@ -164,10 +164,10 @@ Implement the **TerraSpot 4-Stage Harmonization Engine** in TypeScript:
 5. Implement in `src/engine/colorRamps.ts` the **Inferno**, **Viridis**, **Cividis**, and **Diverging Blue-White-Red** scales, validating all logic with automated Vitest suites (Requirements R1, R4, R5, R6).
 
 **Acceptance Criteria:**
-- [ ] Pure, strongly-typed functions in `src/engine/harmonizer.ts` recalculating 27 years × 12 months in $< 30\text{ ms}$ for any bounding box.
-- [ ] Accurate audit metrics demonstrating $R^2 > 0.90$ post-harmonization.
-- [ ] `src/engine/colorRamps.ts` provides continuous, colorblind-safe RGB/Hex interpolation.
-- [ ] Automated test suite passing at 100% in **Vitest** (`pnpm test:run`).
+- [x] Pure, strongly-typed functions in `src/engine/harmonizer.ts` recalculating 27 years × 12 months in $< 30\text{ ms}$ for any bounding box.
+- [x] Accurate audit metrics demonstrating $R^2 > 0.90$ post-harmonization.
+- [x] `src/engine/colorRamps.ts` provides continuous, colorblind-safe RGB/Hex interpolation.
+- [x] Automated test suite passing at 100% in **Vitest** (`pnpm test:run`).
 
 ---
 
@@ -186,9 +186,9 @@ Implement the **TerraSpot 4-Stage Harmonization Engine** in TypeScript:
 Implement semantic CSS design tokens defined in `docs/design-system.md` (aerospace dark mode `#0B0F17` by default and high-contrast light mode). Build `Navbar.tsx` featuring the regional preset selector, year range slider, FIRMS CSV upload modal trigger, CSV export button, theme toggle, and executive `KPISummaryCards.tsx`.
 
 **Acceptance Criteria:**
-- [ ] Semantic CSS variables configured for dark and light modes with WCAG 2.1 AA contrast compliance.
-- [ ] Fully functional `Navbar.tsx` with global controls for region, temporal window, and export actions.
-- [ ] `KPISummaryCards.tsx` displaying live metrics: *Total Harmonized Hotspots*, *Peak Fire Season*, *Selected Year Anomaly ($\Delta\%$ & Z-Score)*, and *Dominant Fire Regime Badge*.
+- [x] Semantic CSS variables configured for dark and light modes with WCAG 2.1 AA contrast compliance.
+- [x] Fully functional `Navbar.tsx` with global controls for region, temporal window, and export actions.
+- [x] `KPISummaryCards.tsx` displaying live metrics: *Total Harmonized Hotspots*, *Peak Fire Season*, *Selected Year Anomaly ($\Delta\%$ & Z-Score)*, and *Dominant Fire Regime Badge*.
 
 ---
 
@@ -238,10 +238,10 @@ Construct the core deliverable mandated by NASA Challenge 15 (**Requirements R2 
 4. Rich interactive tooltips and cell selection synchronizing downstream analytical panels on click.
 
 **Acceptance Criteria:**
-- [ ] High-density 27 × 12 matrix rendering with sensor era indicators (`MODIS Era`, `Dual Fusion Era`, `VIIRS Continuity`).
-- [ ] Instant toggle between 4 analytical metrics and 4 colorblind-safe palettes.
-- [ ] Visual alert badges on cells exceeding critical thresholds ($P_{90}$ / $Z \ge 2.0$).
-- [ ] Clicking any cell or year updates the lower climatology curve and detailed inspection view.
+- [x] High-density 27 × 12 matrix rendering with sensor era indicators (`MODIS Era`, `Dual Fusion Era`, `VIIRS Continuity`).
+- [x] Instant toggle between 4 analytical metrics and 4 colorblind-safe palettes.
+- [x] Visual alert badges on cells exceeding critical thresholds ($P_{90}$ / $Z \ge 2.0$).
+- [x] Clicking any cell or year updates the lower climatology curve and detailed inspection view.
 
 ---
 

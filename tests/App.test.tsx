@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import App from '../src/App';
 
-describe('App Integration (T-05 Mission Navigation & KPI Shell)', () => {
+describe('App Integration (T-05 Mission Navigation, KPIs & T-06 WebGIS Map)', () => {
   it('renders TerraSpot Harmonizer header, Challenge 15 badge, and default Huánuco AOI', () => {
     render(<App />);
     expect(screen.getByText('TerraSpot Harmonizer')).toBeInTheDocument();
@@ -16,7 +16,7 @@ describe('App Integration (T-05 Mission Navigation & KPI Shell)', () => {
     expect(screen.getByTestId('kpi-card-afcd')).toHaveTextContent('29,541');
   });
 
-  it('synchronizes region selection and bilingual EN/ES toggling across Navbar and KPI cards', () => {
+  it('synchronizes region selection and bilingual EN/ES toggling across Navbar, KPI cards, and Map', () => {
     render(<App />);
 
     const regionSelect = screen.getByTestId('region-select');
@@ -37,5 +37,27 @@ describe('App Integration (T-05 Mission Navigation & KPI Shell)', () => {
       '[36.00, -123.80] a [41.50, -118.50]',
     );
     expect(screen.getByTestId('kpi-regime-badge')).toHaveTextContent('Incendio Forestal Severo');
+  });
+
+  it('renders MapAOISelector and synchronizes quick region selection with app state', () => {
+    render(<App />);
+
+    // WebGIS container exists
+    expect(screen.getByTestId('map-aoi-selector')).toBeInTheDocument();
+    expect(screen.getByTestId('map-container')).toBeInTheDocument();
+
+    // Verify initial Huánuco coordinates in inputs
+    expect(screen.getByTestId('input-min-lat')).toHaveValue(-10.6);
+
+    // Select Australia NSW from quick region pills
+    const nswButton = screen.getByTestId('quick-region-AU-NSW');
+    fireEvent.click(nswButton);
+
+    // Verify state propagated to Active AOI Strip and KPI cards
+    expect(screen.getByTestId('active-aoi-name')).toHaveTextContent(
+      'New South Wales Eucalyptus Forest Belt',
+    );
+    expect(screen.getByTestId('kpi-card-afcd')).toHaveTextContent('86,714');
+    expect(screen.getByTestId('input-min-lat')).toHaveValue(-37.5);
   });
 });

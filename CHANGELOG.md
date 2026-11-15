@@ -11,9 +11,26 @@ and this project adheres to [Semantic Versioning (SemVer 2.0.0)](https://semver.
 
 ### Planned
 
-- **Sprint 2 (`T-05`, `T-06`):** *NASA Mission Control* design system, KPI summary cards, and interactive Leaflet WebGIS canvas with bounding box drawing and NASA GIBS WMTS satellite tile overlays.
+- **Sprint 2 (`T-06`):** Interactive Leaflet WebGIS AOI canvas with custom bounding-box drawing and NASA GIBS WMTS satellite tile overlays.
 - **Sprint 3 (`T-07`, `T-08`, `T-09`, `T-10`):** 27-year × 12-month *Burning Activity Calendar Matrix*, climatological anomaly curves, sensor audit view, agricultural vs. wildfire regime classifier, and standardized CSV exporter/uploader.
 - **Sprint 4 (`T-11`, `T-12`):** Public HTTPS edge deployment, executive 7-slide presentation deck in English, and final `1.0.0` release.
+
+---
+
+## [0.5.0] - 2026-11-14
+
+### Added
+
+- **Bilingual Mission Localization Context (`T-05`):** Implemented `src/context/LanguageContext.tsx` and `src/types/language.ts` providing English (`en`, default) and Spanish (`es`) typed dictionaries (`DICTIONARIES`) and `useLanguage()` hook for zero-reload `< 16 ms` UI switching across navigation labels, regions, accessible palettes, months, alert tiers, and regime classifications.
+- **Global Benchmark Region & Palette State (`T-05`):** Implemented `src/context/RegionContext.tsx` (`RegionProvider`, `useRegion`, `DEFAULT_REGIONS_CATALOG`) and `src/context/index.ts`, managing the 5 NASA Challenge 15 benchmark Areas of Interest (`PE-HCO`, `SAM-MAP`, `AR-PAR`, `US-CAL`, `AU-NSW`), accessible color palette selection, and non-blocking hydration of `public/data/regions_catalog.json` with automatic fallback resilience.
+- **Pure KPI Summary Computation Engine (`T-05`):** Implemented `src/engine/kpiCalculator.ts` (`computeKPISummary`, `resolveDominantRegime`, `formatPeakMonthsLabel`) and exported it via `src/engine/index.ts`, deriving cumulative harmonized AFCD (`2000–2026`), cross-sensor $R^2$ fit, peak seasonal concentration, operational `2026-10` anomaly alerts vs. October median ($M_{10}$), mean FRP (MW), nocturnal combustion persistence, and locale-aware number formatting (`Intl.NumberFormat`).
+- **Mission Navigation Shell (`T-05`):** Implemented `src/components/Navbar.tsx` in a 2-tier responsive architecture (`max-w-[1600px]`) featuring the TerraSpot Harmonizer brand, Challenge 15 indicator, `v0.5.0` release tag, MODIS/VIIRS baseline sensor pill, `AOI:` 5-region selector, `RAMP:` / `PALETA:` 4-palette accessible dropdown (`inferno`, `viridis`, `cividis`, `diverging`), reactive `EN / ES` language toggle, and Export CSV trigger.
+- **Executive KPI Summary Cards (`T-05`):** Implemented `src/components/KPISummaryCards.tsx` with a symmetric 3-tier responsive grid (`1` column mobile, `2×2` grid on `768px–1024px` tablets/compact laptops, and `4×1` grid from `1280px` desktop), `28px` hero metrics, untruncated titles, dynamic `18px` semantic severity icons (`ShieldCheck` / `AlertTriangle` / `ShieldAlert` & intensity-synced `Flame`), glowing dominant fire regime badge with overflow guard, WCAG 2.1 AA high-contrast alert pills, skeleton loading placeholders, and defensive formatting.
+- **Component & Integration Tests (`T-05`):** Added `tests/Navbar.test.tsx` (4 tests) and `tests/KPISummaryCards.test.tsx` (5 tests) covering dropdown interactions, locale number formatting, alert/regime badges, loading states, and EN/ES switching.
+
+### Changed
+
+- **Root Mission Shell Integration (`T-05`):** Refactored `src/App.tsx` and `tests/App.test.tsx` to wrap the application in `LanguageProvider` and `RegionProvider`, rendering `Navbar`, reactive `KPISummaryCards` immediately below navigation, and the operational telemetry workspace card with an integrated active AOI & WGS84 bounding-box header strip.
 
 ---
 

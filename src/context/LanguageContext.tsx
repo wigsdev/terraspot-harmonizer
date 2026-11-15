@@ -11,7 +11,7 @@ export const DICTIONARIES: Record<Language, BilingualDictionary> = {
     navbar: {
       brand: 'TerraSpot Harmonizer',
       challengeBadge: 'Challenge 15',
-      versionTag: 'v0.10.0',
+      versionTag: 'v0.11.0',
       subtitle:
         'Unified Multi-Decadal Burning Activity Calendar & Fire Regime Diagnostic Engine (2000–2026)',
       sensorBaseline: 'MODIS (2000–2026) + VIIRS (2012–2026)',
@@ -342,7 +342,7 @@ export const DICTIONARIES: Record<Language, BilingualDictionary> = {
     navbar: {
       brand: 'TerraSpot Harmonizer',
       challengeBadge: 'Challenge 15',
-      versionTag: 'v0.10.0',
+      versionTag: 'v0.11.0',
       subtitle:
         'Calendario Multidecadal Unificado de Actividad de Quemas y Diagnóstico de Régimen de Fuego (2000–2026)',
       sensorBaseline: 'MODIS (2000–2026) + VIIRS (2012–2026)',

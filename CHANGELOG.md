@@ -11,8 +11,37 @@ and this project adheres to [Semantic Versioning (SemVer 2.0.0)](https://semver.
 
 ### Planned
 
-- **Sprint 3 (`T-09`, `T-10`):** Agricultural vs. wildfire regime diagnostic classifier, and standardized RFC 4180 CSV exporter / in-browser FIRMS uploader.
+- **Sprint 3 (`T-10`):** Standardized RFC 4180 CSV exporter / in-browser FIRMS uploader (`csvExporter.ts` and `CustomCSVModal.tsx`).
 - **Sprint 4 (`T-11`, `T-12`):** Public HTTPS edge deployment, executive 7-slide presentation deck in English, and final `1.0.0` release.
+
+---
+
+## [0.9.0] - 2026-11-15
+
+### Added
+
+- **Fire Regime Diagnostic Classifier (`FireRegimePanel.tsx`) (NASA Space Apps Challenge 15 Requirement R6):**
+  - Interactive 2D Recharts Scatter Plot (`ScatterChart`) mapping Mean Fire Radiative Power (MW, X-axis $0\text{--}100\text{ MW}$) against Nocturnal Combustion Persistence ($f_{\text{night}}$, Y-axis $0.0\text{--}0.50$).
+  - Visual demarcation of 3 operational quadrants with tinted reference zones (`ReferenceArea`) and threshold boundary lines (`ReferenceLine` at $X = 25, 45\text{ MW}$ and $Y = 0.10, 0.20$):
+    - **Q1: Seasonal Agricultural Burning** ($< 25\text{ MW}$, $f_{\text{night}} < 0.10$, $I_{\text{regime}} < 35$, emerald/cyan `#10B981`).
+    - **Q2: Mixed / Transitional Regime** ($25\text{--}45\text{ MW}$, $f_{\text{night}} 0.10\text{--}0.20$, $35 \le I_{\text{regime}} < 65$, amber `#F59E0B`).
+    - **Q3: Severe Landscape Wildfire** ($> 45\text{ MW}$, $f_{\text{night}} > 0.20$, $I_{\text{regime}} \ge 65$, crimson `#EF4444`).
+  - Active year observation trajectory highlight ring (`stroke="#38BDF8"`) overlaid atop historical multi-decadal points.
+  - Floating aerospace dark telemetry tooltip (`#0B0F17`) displaying observation date, regime badge, Mean FRP, P90 FRP, $f_{\text{night}}$, harmonized hotspots ($H_{y,m}$), and composite Fire Regime Index ($I_{\text{regime}}$).
+- **Historical Regime Frequency Distribution Breakdown:**
+  - 3 metric cards displaying frequency counts and percentage breakdown (% Agricultural, % Transitional, % Severe Wildfire) for the active AOI.
+  - Overall dominant fire regime badge and multi-decadal average regime index ($\overline{I}_{\text{regime}}$).
+- **Multi-Agency Tactical Mitigation Directives Matrix:**
+  - Context-aware operational guidance dynamically adjusting to active year peak regime severity (`ADVISORY`, `WARNING`, `EMERGENCY`).
+  - Specific action cards for **Civil Defense & Emergency Response**, **Park Rangers & Protected Reserve Units (SERNANP)**, and **Agricultural & Extension Authorities (MIDAGRI)**.
+- **Fire Regime Transformation Engine (`src/engine/fireRegime.ts`):**
+  - Functions: `classifyRegime`, `isActiveFireMonth` (filtering inactive zero-fire months and future incomplete 2026 records), `generateFireRegimeScatterData`, `computeFireRegimeDistribution`, and `generateOperationalMitigation`.
+  - Type contracts in `src/types/regime.ts`.
+- **Bilingual Support & Accessibility:**
+  - 100% localized dictionaries in English and Spanish across panel headers, quadrant labels, distribution cards, tooltips, and tactical mitigation action items.
+  - Colorblind-safe palettes and high-contrast typography meeting WCAG 2.1 Level AA standards.
+- **Unit & Integration Test Coverage:**
+  - Added `tests/FireRegimePanel.test.tsx` (11 tests) and updated `tests/App.test.tsx` (6 tests), expanding test suite to 12 files and 95/95 passing tests with 100% success rate.
 
 ---
 

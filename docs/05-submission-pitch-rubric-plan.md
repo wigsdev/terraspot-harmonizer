@@ -89,10 +89,27 @@ Yes. While the core scientific concept, regional focus on the Peruvian Andes-Ama
 
 ```text
 - Space Agency Partner Reference: National Space Activities Commission of Argentina (CONAE) & Paraguayan Space Agency — regional fire monitoring context for South American ecosystems and the Paraná Delta / Gran Chaco study area.
-- Microsoft Planetary Computer STAC Catalog (NASA Space Apps Global Offer): Environmental and land-cover reference datasets.
+- NASA Space Apps Global Offers Utilized:
+  1. Meteomatics Weather API (Global Collaborator - APIs): Multi-layer soil moisture (0-10cm, 10-40cm), 10m wind vector dynamics, and Forest Fire Warning Index (forest_fire_warning:idx) for physical fire regime validation.
+  2. GoDaddy Registry & Porkbun (Global Collaborator - Domain & Hosting): Custom mission domain with 1-year SSL certificate for high-availability public HTTPS deployment.
+  3. Microsoft Planetary Computer (Global Collaborator - APIs): STAC Catalog open geospatial environmental layers and land-cover baselines.
+  4. GitHub Copilot & Microsoft Copilot (Global Collaborator - Super Intelligence): Official AI coding assistance and English submission peer review complying with NASA SI Policy.
+  5. Miro Business Plan & Hackathon Templates (Global Collaborator - Collaboration): Intelligent canvas architecture diagramming and sprint design.
 - Open Source Software & Libraries: React (MIT), TypeScript (Apache-2.0), Leaflet (BSD-2-Clause), Recharts (MIT), Tailwind CSS (MIT), Lucide Icons (ISC).
 - Scientific Literature Reference: Giglio, L., Schroeder, W., & Justice, C. O. (2016). The collection 6 MODIS active fire detection algorithm and fire products. Remote Sensing of Environment; Schroeder, W. et al. (2014). The New VIIRS 375m active fire detection data product: Algorithm description and initial assessment. Remote Sensing of Environment.
 ```
+
+---
+
+### Field 6.1: NASA Space Apps Challenge 2026 Global Offers Integration Matrix
+
+| Global Collaborator / Offer | Project Integration Scope | Target Milestone | Impact on Global Judging Rubric |
+| :--- | :--- | :---: | :--- |
+| **Meteomatics Weather API** | In-situ fire weather validation (soil moisture dry-down, wind gusts, Fosberg index) correlated with the Fire Regime Classifier ($I_{\text{regime}}$). | `T-09` / `T-10` | High — Proves multi-source scientific synergy (Satellite Thermal + Atmospheric Physics). |
+| **GoDaddy / Porkbun** | Custom registered domain (`terraspot.space` / `terraspot-harmonizer.org`) with 1-year SSL certificate for production deployment. | `T-11` | Critical — Fulfills Requirement R8 with institutional-grade custom URL. |
+| **Microsoft Planetary Computer** | STAC API data discovery for baseline environmental layers and bounding-box spatial verification. | `T-10` | High — Open Science interoperability with cloud-native geospatial standards. |
+| **GitHub Copilot & MS Copilot** | Super Intelligence coding assistance, refactoring, and English submission peer review. | `T-01`–`T-12` | Critical — Transparent adherence to NASA Super Intelligence (SI) Policy. |
+| **Miro Intelligent Canvas** | System architecture diagrams, user journey flows, and pitch deck visual assets. | `T-12` | High — Clean visual assets for the strict 7-slide presentation deck. |
 
 ---
 

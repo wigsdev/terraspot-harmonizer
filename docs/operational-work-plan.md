@@ -402,8 +402,11 @@ flowchart LR
 ---
 
 ### Task 4.3 (`T-10`): Standardized CSV Exporter & Custom FIRMS CSV Ingestion Modal
-- **Branch**: `feat/T-10-exportador-carga-csv`
+- **Branch**: `feat/T-10-csv-export-upload`
 - **Prerequisites**: Task 2.1 and Task 3.3.
+- **NASA Global Offers Integration**:
+  - Align 27-column CSV metadata schema and spatial bounds with **Microsoft Planetary Computer STAC Catalog** standards.
+  - Document in-situ fire weather correlation and validation using **Meteomatics Weather API** (`forest_fire_warning:idx` and multi-layer soil moisture).
 - **Deliverables**:
   - `src/engine/csvExporter.ts`: Client-side RFC 4180 UTF-8 CSV exporter formatted to the 27-column canonical schema defined in [04-firms-data-specification.md](04-firms-data-specification.md).
   - `src/components/CustomCSVModal.tsx`:
@@ -420,7 +423,7 @@ flowchart LR
 - **⚡ Guided Spec Kit Workflow**:
   1. **Specification:**
      ```text
-     /speckit-specify Develop the client-side data export and custom FIRMS ingestion modules (src/engine/csvExporter.ts and src/components/CustomCSVModal.tsx) according to docs/03-system-technical-architecture.md and docs/04-firms-data-specification.md. Support downloading the harmonized monthly series in standardized 27-column RFC 4180 CSV format with full calibration metadata, and provide drag-and-drop ingestion of raw NASA FIRMS CSV files with client-side schema validation and live calendar matrix recalculation.
+     /speckit-specify Implement the Standardized CSV Exporter (src/engine/csvExporter.ts) and Custom NASA FIRMS CSV Ingestion modal (src/components/CustomCSVModal.tsx) fulfilling NASA Space Apps Challenge 15 Requirement R7 and adhering to docs/04-firms-data-specification.md and docs/backlog.md (Task T-10). The exporter must generate a 27-column RFC 4180 compliant CSV containing all multi-decadal monthly records (raw MODIS, raw VIIRS, AFCD, beta factors, harmonized counts, climatological medians, percentage departures, robust Z-scores, FRP stats, and fire regime classifications) aligned with Microsoft Planetary Computer STAC spatial schemas and Meteomatics fire weather validation. The ingestion modal must provide an accessible client-side drag-and-drop interface for user-uploaded FIRMS CSV files with in-memory validation, error handling for corrupted rows, and instant re-harmonization across the dashboard with full bilingual EN/ES support and Vitest unit tests.
      ```
   2. **Lifecycle Steps:**
      ```text
@@ -438,13 +441,15 @@ flowchart LR
 ## 🚀 Block 5: Packaging, 7-Slide Pitch Presentation & NASA Global Submission
 
 ### Task 5.1 (`T-11`): Production Performance Optimization, WCAG 2.1 AA Audit & Global Deployment
-- **Branch**: `feat/T-11-optimizacion-despliegue`
+- **Branch**: `feat/T-11-optimization-deployment`
 - **Prerequisites**: Tasks `T-02` through `T-10` completed.
+- **NASA Global Offers Integration**:
+  - Claim and bind official mission custom domain via **GoDaddy Registry & Porkbun** (free domain registration + 1-year SSL certificate) for primary HTTPS deployment.
 - **Deliverables**:
   - Vite production bundle optimization (code-splitting with `manualChunks` for Leaflet and Recharts).
   - Contrast ratio and full keyboard navigation audit (WCAG 2.1 AA).
   - Clean production compilation: `pnpm build` with zero TypeScript errors or warnings.
-  - Production deployment to public HTTPS URL (Vercel / GitHub Pages, zero authentication barriers).
+  - Production deployment to public HTTPS URL (custom domain + Vercel / GitHub Pages edge fallback, zero authentication barriers).
 - **🛠️ Manual Verification**:
   ```bash
   pnpm build
@@ -454,7 +459,7 @@ flowchart LR
 - **⚡ Guided Spec Kit Workflow**:
   1. **Specification:**
      ```text
-     /speckit-specify Perform production performance optimization, WCAG 2.1 AA accessibility auditing, and public edge deployment preparation for TerraSpot Harmonizer following docs/01-prd-terraspot-harmonizer.md and docs/06-technology-stack-tools.md. Ensure clean code-splitting in Vite, initial load times under 2 seconds on standard broadband, zero public access barriers, and full cross-browser compatibility across Chrome, Firefox, Safari, and Edge.
+     /speckit-specify Perform production performance optimization, WCAG 2.1 AA accessibility auditing, and public edge deployment preparation for TerraSpot Harmonizer following docs/01-prd-terraspot-harmonizer.md, docs/06-technology-stack-tools.md, and docs/backlog.md (Task T-11). Ensure clean code-splitting in Vite, initial load times under 2 seconds on standard broadband, zero public access barriers, configure GoDaddy/Porkbun custom domain and HTTPS deployment, and ensure full cross-browser compatibility across Chrome, Firefox, Safari, and Edge.
      ```
   2. **Lifecycle Steps:**
      ```text
@@ -470,8 +475,10 @@ flowchart LR
 ---
 
 ### Task 5.2 (`T-12`): Interactive 7-Slide Presentation Deck & NASA Space Apps Submission (`v1.0.0`)
-- **Branch**: `feat/T-12-entrega-pitch-nasa`
+- **Branch**: `feat/T-12-submission-pitch-deck`
 - **Prerequisites**: Live public production URL from `T-11`.
+- **NASA Global Offers Integration**:
+  - Formal declaration of **Meteomatics Weather API**, **GoDaddy Registry & Porkbun**, **Microsoft Planetary Computer**, **GitHub Copilot / Microsoft Copilot**, and **Miro** across Slides 3, 5, 6, and the official NASA Space Apps submission form.
 - **Deliverables**:
   - `public/demo-slides.html`: High-resolution responsive HTML presentation of **exactly 7 slides** matching [05-submission-pitch-rubric-plan.md](05-submission-pitch-rubric-plan.md):
     - Slide 1: Title, Challenge 15 & Team (Huánuco, Peru).
@@ -479,8 +486,8 @@ flowchart LR
     - Slide 3: TerraSpot Harmonizer Solution & Core Value.
     - Slide 4: Science & Math (The 4-Stage Harmonization Algorithm).
     - Slide 5: Product Demo (Interactive Burning Activity Calendar & AOI Map).
-    - Slide 6: Real-World Impact (Civil Defense, Agriculture, Science).
-    - Slide 7: Open Science, NASA Data Use, Team & Future Roadmap.
+    - Slide 6: Open Science Architecture, Planetary Computer & Meteomatics Fusion.
+    - Slide 7: Global Impact, Verified Public HTTPS Links & Team Credits.
   - Optional 30-second timed screen-recorded demo video.
   - Final verification of all submission form fields in English prior to Sunday, November 15, at 11:59 p.m.
 - **🛠️ Manual Verification**:
@@ -491,7 +498,7 @@ flowchart LR
 - **⚡ Guided Spec Kit Workflow**:
   1. **Specification:**
      ```text
-     /speckit-specify Construct the official interactive 7-slide presentation deck (public/demo-slides.html) and consolidate the NASA global submission package following docs/05-submission-pitch-rubric-plan.md. Author exactly 7 self-contained slides in English with keyboard and touch navigation, integrating vector charts, live demo links, public repository links, and strict adherence to NASA Space Apps Challenge 2026 global judging criteria.
+     /speckit-specify Construct the official interactive 7-slide presentation deck (public/demo-slides.html) and consolidate the NASA global submission package following docs/05-submission-pitch-rubric-plan.md, docs/backlog.md, and docs/operational-work-plan.md (Task T-12). Author exactly 7 self-contained slides in English with keyboard and touch navigation, integrating vector charts, Global Offers showcase (Meteomatics, GoDaddy/Porkbun, Planetary Computer, Copilot, Miro), live demo links, public repository links, and strict adherence to NASA Space Apps Challenge 2026 global judging criteria.
      ```
   2. **Lifecycle Steps:**
      ```text

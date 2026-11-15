@@ -96,4 +96,25 @@ describe('App Integration (T-05 Mission Navigation, KPIs & T-06 WebGIS Map)', ()
     // Verify Climatology year updated to 2020 via bidirectional synchronization
     expect((screen.getByTestId('climatology-year-select') as HTMLSelectElement).value).toBe('2020');
   });
+
+  it('renders FireRegimePanel and synchronizes active year trajectory (T-09 Requirement R6)', () => {
+    render(<App />);
+
+    // Verify FireRegimePanel mounted
+    expect(screen.getByTestId('fire-regime-panel')).toBeInTheDocument();
+    expect(screen.getByTestId('alert-posture-badge')).toBeInTheDocument();
+
+    // Verify 3 distribution summary cards
+    expect(screen.getByTestId('distribution-card-agricultural')).toBeInTheDocument();
+    expect(screen.getByTestId('distribution-card-transitional')).toBeInTheDocument();
+    expect(screen.getByTestId('distribution-card-severe')).toBeInTheDocument();
+
+    // Verify scatter chart container
+    expect(screen.getByTestId('scatter-chart-container')).toBeInTheDocument();
+
+    // Verify multi-agency recommendation cards
+    expect(screen.getByTestId('agency-card-civil_defense')).toBeInTheDocument();
+    expect(screen.getByTestId('agency-card-park_rangers')).toBeInTheDocument();
+    expect(screen.getByTestId('agency-card-agricultural')).toBeInTheDocument();
+  });
 });

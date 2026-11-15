@@ -8,6 +8,7 @@ import {
   BurningCalendarMatrix,
   ClimatologyAnomalyChart,
   SensorHarmonizationAudit,
+  FireRegimePanel,
 } from './components';
 
 const DashboardContent: React.FC = () => {
@@ -72,6 +73,13 @@ const DashboardContent: React.FC = () => {
 
         {/* Multi-Decadal Sensor Harmonization Audit & Discontinuity Analysis (T-08 User Stories 2 & 3 - P2 & P3) */}
         <SensorHarmonizationAudit />
+
+        {/* Fire Regime Diagnostic Classifier: Agricultural Burning vs. Landscape Wildfires (T-09 - Requirement R6) */}
+        <FireRegimePanel
+          activeCube={currentRegion}
+          selectedYear={selectedYear}
+          onSelectObservation={(year) => setSelectedYear(year)}
+        />
       </main>
 
       <footer className="border-t border-space-800 bg-space-950 px-4 py-3 sm:px-6 sm:py-4 text-[11px] sm:text-xs text-slate-400">

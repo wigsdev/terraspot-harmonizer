@@ -297,7 +297,8 @@ Implement the analytical module fulfilling TerraSpot Harmonizer's core domain va
 Fulfill Challenge 15 Requirement R7:
 1. `csvExporter.ts`: Generate and download with one click the complete 27-year × 12-month CSV dataset for the active AOI (including raw counts, AFCD, $\beta_m$, harmonized counts, historical medians, anomalies, $Z$-scores, FRP, and regime classifications).
 2. `CustomCSVModal.tsx`: Modal interface allowing scientists and judges to upload raw NASA FIRMS CSV files (MODIS or VIIRS) or load the provided `sample_firms_huanuco.csv` for real-time in-browser harmonization.
-3. *Future Enhancement (T-08 Audit):* Include quick snapshot/image export (SVG/PNG) for the seasonal climatology and audit charts for operational field reporting.
+3. *NASA Global Offers Integration:* Formulate CSV metadata schema and spatial bounds aligned with **Microsoft Planetary Computer STAC Catalog** and document in-situ fire weather correlation with **Meteomatics Weather API** (`forest_fire_warning:idx` and multi-layer soil moisture).
+4. *Future Enhancement (T-08 Audit):* Include quick snapshot/image export (SVG/PNG) for the seasonal climatology and audit charts for operational field reporting.
 
 **Acceptance Criteria:**
 - [ ] **"Download Harmonized CSV"** button exports an RFC 4180 CSV containing all 27 columns specified in `docs/04-firms-data-specification.md`.
@@ -318,7 +319,8 @@ Fulfill Challenge 15 Requirement R7:
 
 **Description & Technical Context:**  
 Perform final UI/UX polish, cross-device responsiveness verification, compile clean static production bundle (`pnpm build` with zero warnings), and deploy to a public HTTPS URL without passwords or access restrictions (Requirement R8).
-1. *Future Enhancement (T-08 Audit):* Implement docked bottom positioning or compact mode for floating telemetry tooltips on ultra-small mobile screens ($< 360\text{ px}$).
+1. *NASA Global Offers Integration:* Claim and configure official custom mission domain via **GoDaddy Registry & Porkbun** (free domain + 1-year SSL certificate) for primary deployment URL, with automatic Vercel / GitHub Pages edge fallback.
+2. *Future Enhancement (T-08 Audit):* Implement docked bottom positioning or compact mode for floating telemetry tooltips on ultra-small mobile screens ($< 360\text{ px}$).
 
 **Acceptance Criteria:**
 - [ ] `pnpm build` compiles cleanly with zero TypeScript errors and zero critical warnings.
@@ -338,8 +340,9 @@ Perform final UI/UX polish, cross-device responsiveness verification, compile cl
 
 **Description & Technical Context:**  
 Construct the interactive **7-slide presentation deck** in English (strictly meeting NASA Global Judging limits), verify live demo and project links in `docs/05-submission-pitch-rubric-plan.md`, and finalize SemVer `1.0.0` in `package.json` and `CHANGELOG.md`.
+1. *NASA Global Offers Integration:* Feature **Meteomatics Weather API**, **GoDaddy / Porkbun**, **Microsoft Planetary Computer**, **GitHub Copilot**, and **Miro** across Slides 3, 5, 6, and the official submission form fields to maximize the *Partner Resources & Global Offers* rubric score.
 
 **Acceptance Criteria:**
 - [ ] Exactly **7 slides in English** presenting TerraSpot Harmonizer architecture, results, and Huánuco/Amazon case studies.
-- [ ] All submission form text fields verified in English and ready for submission before the deadline.
+- [ ] All submission form text fields verified in English and ready for submission before the deadline, with Global Offers declared.
 - [ ] Version `1.0.0` tagged and recorded in `CHANGELOG.md`.

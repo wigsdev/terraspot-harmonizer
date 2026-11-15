@@ -4,6 +4,7 @@
 * **Official NASA Challenge:** Challenge 15 — *Harmonization of MODIS and VIIRS Hot Spots*
 * **Submission Deadline:** Sunday, November 15, 2026, at 11:59 p.m. (Local Event Time: Huánuco, Peru / UTC-5).
 * **Document Version:** 1.0
+* **Interactive 7-Slide Deck:** `public/demo-slides.html` (served at `/demo-slides.html`; exactly 7 slides, offline, English)
 
 ---
 
@@ -92,9 +93,9 @@ Yes. While the core scientific concept, regional focus on the Peruvian Andes-Ama
 ```text
 - Space Agency Partner Reference: National Space Activities Commission of Argentina (CONAE) & Paraguayan Space Agency — regional fire monitoring context for South American ecosystems and the Paraná Delta / Gran Chaco study area.
 - NASA Space Apps Global Offers Utilized:
-  1. Meteomatics Weather API (Global Collaborator - APIs): Multi-layer soil moisture (0-10cm, 10-40cm), 10m wind vector dynamics, and Forest Fire Warning Index (forest_fire_warning:idx) for physical fire regime validation.
+  1. Meteomatics Weather API (Global Collaborator - APIs): Live in-situ fire weather per benchmark AOI via scripts/fetch_meteomatics.py (credentials kept in a git-ignored .env): forest_fire_warning:idx, t_2m:C, relative_humidity_2m:p, wind_speed_10m:ms, wind_gusts_10m_1h:ms, precip_24h:mm and evapotranspiration_24h:mm, cached in public/data/meteomatics_weather.json and shown in the custom FIRMS ingestion modal for physical fire regime validation.
   2. GoDaddy Registry & Porkbun (Global Collaborator - Domain & Hosting): Custom mission domain with 1-year SSL certificate for high-availability public HTTPS deployment.
-  3. Microsoft Planetary Computer (Global Collaborator - APIs): STAC Catalog open geospatial environmental layers and land-cover baselines.
+  3. Microsoft Planetary Computer (Global Collaborator - APIs): The 27-column CSV export schema and AOI bounding boxes follow STAC conventions for interoperability with the Planetary Computer open geospatial catalog.
   4. GitHub Copilot & Microsoft Copilot (Global Collaborator - Super Intelligence): Official AI coding assistance and English submission peer review complying with NASA SI Policy.
   5. Miro Business Plan & Hackathon Templates (Global Collaborator - Collaboration): Intelligent canvas architecture diagramming and sprint design.
 - Open Source Software & Libraries: React (MIT), TypeScript (Apache-2.0), Leaflet (BSD-2-Clause), Recharts (MIT), Tailwind CSS (MIT), Lucide Icons (ISC).

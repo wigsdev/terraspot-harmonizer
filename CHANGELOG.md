@@ -9,9 +9,23 @@ and this project adheres to [Semantic Versioning (SemVer 2.0.0)](https://semver.
 
 ## [Unreleased]
 
-### Planned
+---
 
-- **Sprint 4 (`T-12`):** Executive 7-slide presentation deck in English, final project pitch verification, and final `1.0.0` release.
+## [1.0.0] - 2026-11-15
+
+### Added
+
+- **Interactive 7-Slide Executive Pitch Deck (`public/demo-slides.html`) (T-12):**
+  - Exactly 7 slides in English (NASA Global Judging limit): title, sensor-discontinuity problem, 4-stage harmonization engine, Burning Activity Calendar demo, Andes–Amazon validity case study, open-science architecture, and impact with verified public links.
+  - 100% self-contained and offline (inline CSS/JS/SVG, zero CDN dependencies); keyboard (`←`, `→`, `Space`, `Home`, `End`, `F`), touch-swipe and on-screen navigation with a `Slide X of 7` counter and deep-link hashes.
+  - Colorblind-safe ramp legend (Inferno, Viridis, Cividis, Diverging) and `prefers-reduced-motion` support.
+- **NASA Global Offers prominently featured** across slides 3–7 and submission text: Meteomatics Weather API, GoDaddy Registry & Porkbun, Microsoft Planetary Computer, GitHub Copilot and Miro.
+- **Automated deck verification (`tests/slideDeck.test.ts`):** asserts exactly 7 slides, English/offline integrity, navigation handlers, the 5 Global Offers and SI disclosure (5 tests).
+
+### Changed
+
+- `docs/05-submission-pitch-rubric-plan.md`: Field 6 now lists the exact Meteomatics parameters actually used and the STAC alignment of the CSV schema; deck location documented.
+- Project version promoted to **1.0.0** (`package.json`, UI version tag, tests, README badge). All 12 backlog tasks (`T-01`–`T-12`) completed.
 
 ---
 

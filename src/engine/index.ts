@@ -9,3 +9,4 @@ export * from './gibsLayers';
 export * from './spatialGrid';
 export * from './calendarMatrix';
 export * from './climatologyEngine';
+export * from './fireRegime';

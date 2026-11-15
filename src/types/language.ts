@@ -213,6 +213,60 @@ export interface BilingualDictionary {
       era: string;
     };
   };
+  fireRegime: {
+    title: string;
+    subtitle: string;
+    quadrants: {
+      agricultural: string;
+      agriculturalSub: string;
+      transitional: string;
+      transitionalSub: string;
+      severeWildfire: string;
+      severeWildfireSub: string;
+    };
+    axes: {
+      xAxis: string;
+      yAxis: string;
+    };
+    legend: {
+      agricultural: string;
+      transitional: string;
+      severeWildfire: string;
+      activeYearHighlight: string;
+    };
+    distribution: {
+      title: string;
+      agriculturalLabel: string;
+      transitionalLabel: string;
+      severeWildfireLabel: string;
+      dominantRegime: string;
+      meanIndex: string;
+      totalMonths: string;
+    };
+    mitigation: {
+      title: string;
+      subtitle: string;
+      activePosture: string;
+      postures: {
+        ADVISORY: string;
+        WARNING: string;
+        EMERGENCY: string;
+      };
+      agencyCivilDefense: string;
+      agencyParkRangers: string;
+      agencyAgricultural: string;
+    };
+    tooltip: {
+      period: string;
+      regime: string;
+      meanFrp: string;
+      p90Frp: string;
+      nightFraction: string;
+      hotspots: string;
+      regimeIndex: string;
+    };
+    zeroFireNotice: string;
+  };
   monthNamesShort: string[];
 }
 

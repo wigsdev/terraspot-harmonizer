@@ -11,7 +11,7 @@ export const DICTIONARIES: Record<Language, BilingualDictionary> = {
     navbar: {
       brand: 'TerraSpot Harmonizer',
       challengeBadge: 'Challenge 15',
-      versionTag: 'v0.8.0',
+      versionTag: 'v0.9.0',
       subtitle:
         'Unified Multi-Decadal Burning Activity Calendar & Fire Regime Diagnostic Engine (2000–2026)',
       sensorBaseline: 'MODIS (2000–2026) + VIIRS (2012–2026)',
@@ -233,13 +233,69 @@ export const DICTIONARIES: Record<Language, BilingualDictionary> = {
         era: 'Sensor Regime',
       },
     },
+    fireRegime: {
+      title: 'Fire Regime Diagnostic Classifier: Agricultural Burning vs. Landscape Wildfires',
+      subtitle:
+        '2D phase-space classification integrating Fire Radiative Power (MW) and nocturnal combustion persistence (f_night) fulfilling NASA Challenge 15 Requirement R6.',
+      quadrants: {
+        agricultural: 'Seasonal Agricultural Burning',
+        agriculturalSub: 'Daytime low-intensity crop residue clearance (Mean FRP < 25 MW, f_night < 0.10, I_regime < 35)',
+        transitional: 'Mixed / Transitional Regime',
+        transitionalSub: 'Escaped field burns & secondary scrub fires (Mean FRP 25–45 MW, f_night 0.10–0.20, I_regime 35–65)',
+        severeWildfire: 'Severe Landscape Wildfire',
+        severeWildfireSub: 'High-intensity crown combustion with nocturnal persistence (Mean FRP > 45 MW, f_night > 0.20, I_regime ≥ 65)',
+      },
+      axes: {
+        xAxis: 'Mean Fire Radiative Power — FRP (Megawatts)',
+        yAxis: 'Nocturnal Combustion Persistence — f_night (Fraction)',
+      },
+      legend: {
+        agricultural: 'Agricultural Burning',
+        transitional: 'Transitional / Escaped Burn',
+        severeWildfire: 'Severe Landscape Wildfire',
+        activeYearHighlight: 'Active Year Trajectory',
+      },
+      distribution: {
+        title: 'Historical Regime Frequency Distribution (AOI Baseline)',
+        agriculturalLabel: 'Agricultural Burning',
+        transitionalLabel: 'Transitional / Escaped',
+        severeWildfireLabel: 'Severe Wildfires',
+        dominantRegime: 'Dominant AOI Regime',
+        meanIndex: 'Multi-Decadal Mean Index (I_regime)',
+        totalMonths: 'Active Fire Months Analyzed',
+      },
+      mitigation: {
+        title: 'Multi-Agency Operational Mitigation & Tactical Directives',
+        subtitle:
+          'Context-aware operational guidance dynamically calibrated to the active year peak fire regime severity.',
+        activePosture: 'Operational Alert Posture',
+        postures: {
+          ADVISORY: 'Advisory: Routine Agrarian Governance',
+          WARNING: 'Warning: Escape Risk & Buffer Defense',
+          EMERGENCY: 'Emergency: Full Wildfire Mobilization',
+        },
+        agencyCivilDefense: 'Civil Defense & Emergency Response',
+        agencyParkRangers: 'Park Rangers & Conservation Units',
+        agencyAgricultural: 'Agricultural & Extension Authorities',
+      },
+      tooltip: {
+        period: 'Observation Month',
+        regime: 'Diagnostic Regime',
+        meanFrp: 'Mean FRP',
+        p90Frp: 'P90 FRP',
+        nightFraction: 'Night Combustion',
+        hotspots: 'Harmonized Hotspots',
+        regimeIndex: 'Regime Index (I_regime)',
+      },
+      zeroFireNotice: 'Note: Inactive months with zero detected fire activity are excluded from the phase space.',
+    },
     monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
   },
   es: {
     navbar: {
       brand: 'TerraSpot Harmonizer',
       challengeBadge: 'Challenge 15',
-      versionTag: 'v0.8.0',
+      versionTag: 'v0.9.0',
       subtitle:
         'Calendario Multidecadal Unificado de Actividad de Quemas y Diagnóstico de Régimen de Fuego (2000–2026)',
       sensorBaseline: 'MODIS (2000–2026) + VIIRS (2012–2026)',
@@ -460,6 +516,62 @@ export const DICTIONARIES: Record<Language, BilingualDictionary> = {
         harmonized: 'Focos Armonizados',
         era: 'Régimen de Sensores',
       },
+    },
+    fireRegime: {
+      title: 'Clasificador Diagnóstico de Régimen de Fuego: Quemas Agrícolas vs. Incendios Forestales',
+      subtitle:
+        'Espacio de fase 2D integrando Potencia Radiativa de Fuego (MW) y persistencia de combustión nocturna (f_night), cumpliendo el Requisito R6 del Desafío 15 de la NASA.',
+      quadrants: {
+        agricultural: 'Quemas Agrícolas Estacionales',
+        agriculturalSub: 'Eliminación diurna de rastrojos de baja intensidad (FRP Medio < 25 MW, f_night < 0.10, I_regime < 35)',
+        transitional: 'Régimen Mixto / Transicional',
+        transitionalSub: 'Quemas de rastrojo escapadas y fuegos de matorral (FRP Medio 25–45 MW, f_night 0.10–0.20, I_regime 35–65)',
+        severeWildfire: 'Incendio Forestal de Paisaje Severo',
+        severeWildfireSub: 'Combustión de copas de alta intensidad con persistencia nocturna (FRP Medio > 45 MW, f_night > 0.20, I_regime ≥ 65)',
+      },
+      axes: {
+        xAxis: 'Potencia Radiativa de Fuego Media — FRP (Megavatios)',
+        yAxis: 'Persistencia de Combustión Nocturna — f_night (Fracción)',
+      },
+      legend: {
+        agricultural: 'Quemas Agrícolas',
+        transitional: 'Quema Transicional / Escape',
+        severeWildfire: 'Incendio Forestal Severo',
+        activeYearHighlight: 'Trayectoria del Año Activo',
+      },
+      distribution: {
+        title: 'Distribución Histórica de Frecuencia de Regímenes (Línea Base del AOI)',
+        agriculturalLabel: 'Quemas Agrícolas',
+        transitionalLabel: 'Transicionales / Escapes',
+        severeWildfireLabel: 'Incendios Severos',
+        dominantRegime: 'Régimen Dominante del AOI',
+        meanIndex: 'Índice Multidecadal Promedio (I_regime)',
+        totalMonths: 'Meses con Actividad Analizados',
+      },
+      mitigation: {
+        title: 'Mitigación Operativa Multiactor & Directivas Tácticas',
+        subtitle:
+          'Orientación operativa sensible al contexto calibrada dinámicamente según la severidad pico del año activo.',
+        activePosture: 'Postura de Alerta Operativa',
+        postures: {
+          ADVISORY: 'Aviso: Gobernanza Agraria Preventiva',
+          WARNING: 'Alerta: Riesgo de Escape & Defensa de Margen',
+          EMERGENCY: 'Emergencia: Movilización Integral contra Incendios',
+        },
+        agencyCivilDefense: 'Defensa Civil & Respuesta de Emergencia',
+        agencyParkRangers: 'Guardaparques & Unidades de Conservación',
+        agencyAgricultural: 'Autoridades Agrarias & Extensión Rural',
+      },
+      tooltip: {
+        period: 'Mes de Observación',
+        regime: 'Régimen Diagnóstico',
+        meanFrp: 'FRP Medio',
+        p90Frp: 'FRP P90',
+        nightFraction: 'Combustión Nocturna',
+        hotspots: 'Focos Armonizados',
+        regimeIndex: 'Índice de Régimen (I_regime)',
+      },
+      zeroFireNotice: 'Nota: Los meses inactivos sin focos detectados se excluyen del espacio de fase.',
     },
     monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
   },

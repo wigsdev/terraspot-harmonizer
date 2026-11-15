@@ -58,6 +58,39 @@ export interface BilingualDictionary {
       };
     };
   };
+  map: {
+    title: string;
+    subtitle: string;
+    layerSelectAria: string;
+    layers: {
+      darkMatter: string;
+      modisTrueColor: string;
+      viirsTrueColor: string;
+      fireCells: string;
+    };
+    drawAoiButton: string;
+    drawingActive: string;
+    resetAoiButton: string;
+    fitBoundsButton: string;
+    coordinatesHeading: string;
+    minLat: string;
+    maxLat: string;
+    minLon: string;
+    maxLon: string;
+    invalidCoordsError: string;
+    cellPopup: {
+      title: string;
+      coordinates: string;
+      totalAfcd: string;
+      peakMonth: string;
+      meanFrp: string;
+      p90Frp: string;
+      nightFraction: string;
+      regime: string;
+    };
+    noCellsDetected: string;
+    gibsReferenceDateLabel: string;
+  };
   monthNamesShort: string[];
 }
 

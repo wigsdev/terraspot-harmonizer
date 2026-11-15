@@ -31,16 +31,16 @@ describe('Executive Slide Deck (T-12)', () => {
     expect(html).toContain("'Slide ' + (idx + 1) + ' of ' + total");
   });
 
-  it('features all 5 NASA Space Apps Global Offers', () => {
+  it('features the NASA Space Apps Global Offers', () => {
     for (const offer of [
       'Meteomatics Weather API',
-      'GoDaddy Registry &amp; Porkbun',
       'Microsoft Planetary Computer',
       'GitHub Copilot',
       'Miro',
     ]) {
       expect(html).toContain(offer);
     }
+    expect(html).not.toContain('GoDaddy');
   });
 
   it('discloses SI usage and does not embed NASA logos', () => {

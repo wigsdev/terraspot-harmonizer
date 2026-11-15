@@ -115,8 +115,7 @@ TerraSpot Harmonizer fully satisfies **NASA Space Apps Challenge 2026 Requiremen
 
 * 🚀 **Edge Production Hosting:** Deployed on Vercel Edge Network with static SPA rewrites, strict HSTS, and immutable asset caching.
   * **Live Public URL:** [https://terraspot-harmonizer.vercel.app](https://terraspot-harmonizer.vercel.app)
-* 🌐 **Custom Mission Domain (GoDaddy Registry / Porkbun NASA Global Offer):**
-  * Configured for custom root apex routing at `https://terraspot-harmonizer.space` via automated SSL edge termination.
+  * **Interactive Pitch Deck (7 Slides):** [https://terraspot-harmonizer.vercel.app/demo-slides](https://terraspot-harmonizer.vercel.app/demo-slides)
 * 🌦️ **Meteomatics Weather API (NASA Global Offer):**
   * Automated high-resolution in-situ fire weather data fetch (`forest_fire_warning:idx`, 2m temperature, relative humidity, wind speed, evapotranspiration) cached client-side for immediate correlation with active hotspots.
 * 🪐 **Microsoft Planetary Computer (NASA Global Offer):**

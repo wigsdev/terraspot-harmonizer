@@ -57,7 +57,7 @@ TerraSpot Harmonizer transforms fragmented multi-mission satellite fire detectio
 ### Tools, Coding Languages, and Software Used
 - Frontend & Visualization: React 19, TypeScript, Vite, Tailwind CSS v4, Recharts, Custom Heatmap Matrix Engine, Leaflet / React-Leaflet.
 - Geospatial & Data Processing: Python 3 (data cubes compilation), TypeScript client-side harmonization engine, NASA GIBS WMTS satellite imagery layers.
-- Hosting, Edge Network & Custom Domain (NASA Global Offers): Vercel Edge Network, GoDaddy Registry & Porkbun custom domain (`https://terraspot-harmonizer.space`), GitHub.
+- Hosting, Edge Network & Deployment: Vercel Edge Network, GitHub.
 - Live Public Application URL (Requirement R8): https://terraspot-harmonizer.vercel.app
 - Source Code Repository: https://github.com/wigsdev/terraspot-harmonizer
 ```
@@ -94,10 +94,9 @@ Yes. While the core scientific concept, regional focus on the Peruvian Andes-Ama
 - Space Agency Partner Reference: National Space Activities Commission of Argentina (CONAE) & Paraguayan Space Agency — regional fire monitoring context for South American ecosystems and the Paraná Delta / Gran Chaco study area.
 - NASA Space Apps Global Offers Utilized:
   1. Meteomatics Weather API (Global Collaborator - APIs): Live in-situ fire weather per benchmark AOI via scripts/fetch_meteomatics.py (credentials kept in a git-ignored .env): forest_fire_warning:idx, t_2m:C, relative_humidity_2m:p, wind_speed_10m:ms, wind_gusts_10m_1h:ms, precip_24h:mm and evapotranspiration_24h:mm, cached in public/data/meteomatics_weather.json and shown in the custom FIRMS ingestion modal for physical fire regime validation.
-  2. GoDaddy Registry & Porkbun (Global Collaborator - Domain & Hosting): Custom mission domain with 1-year SSL certificate for high-availability public HTTPS deployment.
-  3. Microsoft Planetary Computer (Global Collaborator - APIs): The 27-column CSV export schema and AOI bounding boxes follow STAC conventions for interoperability with the Planetary Computer open geospatial catalog.
-  4. GitHub Copilot & Microsoft Copilot (Global Collaborator - Super Intelligence): Official AI coding assistance and English submission peer review complying with NASA SI Policy.
-  5. Miro Business Plan & Hackathon Templates (Global Collaborator - Collaboration): Intelligent canvas architecture diagramming and sprint design.
+  2. Microsoft Planetary Computer (Global Collaborator - APIs): The 27-column CSV export schema and AOI bounding boxes follow STAC conventions for interoperability with the Planetary Computer open geospatial catalog.
+  3. GitHub Copilot & Microsoft Copilot (Global Collaborator - Super Intelligence): Official AI coding assistance and English submission peer review complying with NASA SI Policy.
+  4. Miro Business Plan & Hackathon Templates (Global Collaborator - Collaboration): Intelligent canvas architecture diagramming and sprint design.
 - Open Source Software & Libraries: React (MIT), TypeScript (Apache-2.0), Leaflet (BSD-2-Clause), Recharts (MIT), Tailwind CSS (MIT), Lucide Icons (ISC).
 - Scientific Literature Reference: Giglio, L., Schroeder, W., & Justice, C. O. (2016). The collection 6 MODIS active fire detection algorithm and fire products. Remote Sensing of Environment; Schroeder, W. et al. (2014). The New VIIRS 375m active fire detection data product: Algorithm description and initial assessment. Remote Sensing of Environment.
 ```
@@ -109,7 +108,6 @@ Yes. While the core scientific concept, regional focus on the Peruvian Andes-Ama
 | Global Collaborator / Offer | Project Integration Scope | Target Milestone | Impact on Global Judging Rubric |
 | :--- | :--- | :---: | :--- |
 | **Meteomatics Weather API** | In-situ fire weather validation (soil moisture dry-down, wind gusts, Fosberg index) correlated with the Fire Regime Classifier ($I_{\text{regime}}$). | `T-09` / `T-10` | High — Proves multi-source scientific synergy (Satellite Thermal + Atmospheric Physics). |
-| **GoDaddy / Porkbun** | Custom registered domain (`terraspot.space` / `terraspot-harmonizer.org`) with 1-year SSL certificate for production deployment. | `T-11` | Critical — Fulfills Requirement R8 with institutional-grade custom URL. |
 | **Microsoft Planetary Computer** | STAC API data discovery for baseline environmental layers and bounding-box spatial verification. | `T-10` | High — Open Science interoperability with cloud-native geospatial standards. |
 | **GitHub Copilot & MS Copilot** | Super Intelligence coding assistance, refactoring, and English submission peer review. | `T-01`–`T-12` | Critical — Transparent adherence to NASA Super Intelligence (SI) Policy. |
 | **Miro Intelligent Canvas** | System architecture diagrams, user journey flows, and pitch deck visual assets. | `T-12` | High — Clean visual assets for the strict 7-slide presentation deck. |

@@ -11,10 +11,29 @@ and this project adheres to [Semantic Versioning (SemVer 2.0.0)](https://semver.
 
 ### Planned
 
-- **Sprint 1 (`T-04`):** Pure TypeScript mathematical engine (`harmonizer.ts`) implementing the *TerraSpot 4-Stage* algorithm and accessible color scales (`colorRamps.ts`).
 - **Sprint 2 (`T-05`, `T-06`):** *NASA Mission Control* design system, KPI summary cards, and interactive Leaflet WebGIS canvas with bounding box drawing and NASA GIBS WMTS satellite tile overlays.
 - **Sprint 3 (`T-07`, `T-08`, `T-09`, `T-10`):** 27-year × 12-month *Burning Activity Calendar Matrix*, climatological anomaly curves, sensor audit view, agricultural vs. wildfire regime classifier, and standardized CSV exporter/uploader.
 - **Sprint 4 (`T-11`, `T-12`):** Public HTTPS edge deployment, executive 7-slide presentation deck in English, and final `1.0.0` release.
+
+---
+
+## [0.4.0] - 2026-11-14
+
+### Added
+
+- **Pure Client-Side Spatiotemporal Harmonization Engine (`T-04`):** Implemented `src/engine/harmonizer.ts` with pure, deterministic functions executing Stages 1–4 of `docs/02-modis-viirs-harmonization-methodology.md`:
+  - *Stage 1 (Radiometric Quality Masking):* `isValidVegetationFire` and `filterQualityDetections` enforcing `type == 0`, MODIS confidence $\ge 30\%$, and VIIRS confidence $\in \{\text{'n'}, \text{'h'}\}$.
+  - *Stage 2 (Geometric Co-Registration):* `getGridCoordinates`, `aggregateToAfcdGrid`, and `groupCellDaysByMonth` collapsing same-day same-sensor hits inside $0.01^\circ$ cells into single Active Fire Cell-Days (`AFCD`).
+  - *Stage 3 (Seasonal Cross-Calibration & Temporal Synthesis):* `calculateSeasonalBeta` with Laplace smoothing ($\lambda = 1.0$) over `2012–2025`, `computeValidationMetrics` ($R^2 > 0.90$, Pearson $r$, MAPE reduction $> 65\%$), and `harmonizeTimeSeries` across three eras (`MODIS_SOLO`, `DUAL_SENSOR_FUSION` $0.70/0.30$, `VIIRS_CONTINUITY`).
+  - *Stage 4 (Climatology & Fire Regime):* Non-parametric `linearPercentile`, `computeMonthlyClimatology` (`2001–2025` baseline `median`, `p25`, `p75`, `iqr`, `p90`), robust $Z$-score, `classifyAnomalyStatus` (`NORMAL`, `ELEVATED`, `CRITICAL`), and `classifyFireRegime` calculating the Fire Regime Intensity Index ($I_{\text{regime}} \in [0, 100]$) into `AGRICULTURAL_BURN`, `TRANSITIONAL`, or `SEVERE_WILDFIRE`.
+  - *Dynamic AOI & CSV Pipeline:* `normalizeBoundingBox`, `reharmonizeSpatialSubset` ($< 10\text{ ms}$ bounding-box recalculation over `firms_spatial_cells.json`), and `harmonizeRawDetections` for raw user-uploaded NASA FIRMS records.
+- **Colorblind-Safe Palettes & WCAG 2.1 AA Contrast Engine (`T-04`):** Implemented `src/engine/colorRamps.ts`:
+  - Defined 5-stop piecewise-linear interpolators (`inferno`, `viridis`, `cividis`, `diverging`) matching Section 2.3 of `docs/design-system.md`.
+  - Implemented `normalizeValue` and symmetric `normalizeDivergingAnomaly` centered at `0.5` (`0.0%` departure).
+  - Implemented WCAG 2.1 relative luminance calculator (`getRelativeLuminance`) and contrast ratio resolver (`getContrastRatio`, `getAccessibleTextColor`, `getAccessibleCellStyle`) guaranteeing contrast ratio $\ge 4.5:1$ across all 101 normalized steps ($t \in [0.0, 1.0]$).
+  - Exported unified engine public API via `src/engine/index.ts`.
+- **Domain Contract Extensions (`T-04`):** Extended `src/types/` (`harmonization.ts`, `palette.ts`) with `AnomalyAlertStatus`, `FireRegimeClass`, `QualityFilterStats`, `MonthlySensorObservation`, `HarmonizationResult`, `RgbColor`, and `ColorCellStyle`.
+- **Automated Vitest Verification Suites (`T-04`):** Created `tests/harmonizer.test.ts` (17 tests covering Stages 1–4, benchmark catalog mathematical parity with zero rounding drift, and $< 30\text{ ms}$ custom AOI performance) and `tests/colorRamps.test.ts` (17 tests verifying 5-stop anchors, symmetric diverging mapping, degenerate inputs, and $100\%$ WCAG 2.1 AA contrast compliance), raising project suite to 5 files and 44/44 passing tests.
 
 ---
 

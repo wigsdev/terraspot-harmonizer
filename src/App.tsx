@@ -9,12 +9,20 @@ import {
   ClimatologyAnomalyChart,
   SensorHarmonizationAudit,
   FireRegimePanel,
+  CustomCSVModal,
 } from './components';
 
 const DashboardContent: React.FC = () => {
   const { language, t } = useLanguage();
-  const { currentRegion, selectedRegionId } = useRegion();
+  const {
+    currentRegion,
+    selectedRegionId,
+    isCustomActive,
+    setCustomCube,
+    clearCustomCube,
+  } = useRegion();
   const [selectedYear, setSelectedYear] = useState<number>(2024);
+  const [isUploadModalOpen, setIsUploadModalOpen] = useState<boolean>(false);
 
   const regionName = t.regionNames[selectedRegionId] ?? currentRegion?.name ?? selectedRegionId;
   const countryName = t.regionCountries[selectedRegionId] ?? currentRegion?.country ?? '';
@@ -26,7 +34,15 @@ const DashboardContent: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-space-950 text-[#E2E8F0] flex flex-col font-sans selection:bg-thermal-500/30 selection:text-white">
-      <Navbar />
+      <Navbar onOpenUploadModal={() => setIsUploadModalOpen(true)} />
+
+      <CustomCSVModal
+        isOpen={isUploadModalOpen}
+        onClose={() => setIsUploadModalOpen(false)}
+        onApplyCustomCube={(cube) => setCustomCube(cube)}
+        onResetToBenchmark={() => clearCustomCube()}
+        isCustomActive={isCustomActive}
+      />
 
       <main className="flex-1 max-w-[1600px] w-full mx-auto p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-6">
         {/* Executive 4-Card KPI Summary Panel */}

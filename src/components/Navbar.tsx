@@ -12,15 +12,37 @@ import {
   Palette,
   Languages,
   Download,
+  Upload,
+  RotateCcw,
 } from 'lucide-react';
 import { useLanguage, useRegion } from '../context';
+import { downloadHarmonizedCSV } from '../engine';
 import type { PaletteType } from '../types';
 
 const PALETTE_OPTIONS: PaletteType[] = ['inferno', 'viridis', 'cividis', 'diverging'];
 
-export const Navbar: React.FC = () => {
+export interface NavbarProps {
+  onOpenUploadModal?: () => void;
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ onOpenUploadModal }) => {
   const { language, toggleLanguage, t } = useLanguage();
-  const { selectedRegionId, regionsList, activePalette, setRegionId, setPalette } = useRegion();
+  const {
+    selectedRegionId,
+    regionsList,
+    activePalette,
+    setRegionId,
+    setPalette,
+    currentRegion,
+    isCustomActive,
+    clearCustomCube,
+  } = useRegion();
+
+  const handleExportCSV = () => {
+    if (currentRegion) {
+      downloadHarmonizedCSV(currentRegion);
+    }
+  };
 
   return (
     <header className="border-b border-space-800 bg-space-900/95 backdrop-blur sticky top-0 z-50 px-4 py-2.5 sm:px-6 sm:py-3">
@@ -50,9 +72,31 @@ export const Navbar: React.FC = () => {
             </div>
           </div>
 
-          <div className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-mono text-slate-300 bg-space-950 px-2.5 py-1 rounded-md border border-space-800 self-start sm:self-center shrink-0">
-            <Satellite className="w-3.5 h-3.5 text-cyan-300 shrink-0" aria-hidden="true" />
-            <span className="whitespace-nowrap">{t.navbar.sensorBaseline}</span>
+          <div className="flex items-center gap-2 flex-wrap">
+            {isCustomActive && (
+              <div
+                data-testid="custom-data-badge"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-amber-500/15 border border-amber-500/40 text-amber-300 text-[11px] font-mono shrink-0"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping" />
+                <span>{t.navbar.customDataBadge}</span>
+                <button
+                  type="button"
+                  onClick={clearCustomCube}
+                  data-testid="reset-benchmark-button"
+                  className="ml-1 inline-flex items-center gap-1 text-slate-300 hover:text-white underline cursor-pointer"
+                  title={t.navbar.resetBenchmark}
+                >
+                  <RotateCcw className="w-3 h-3 text-amber-400" />
+                  <span>{t.navbar.resetBenchmark}</span>
+                </button>
+              </div>
+            )}
+
+            <div className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-mono text-slate-300 bg-space-950 px-2.5 py-1 rounded-md border border-space-800 self-start sm:self-center shrink-0">
+              <Satellite className="w-3.5 h-3.5 text-cyan-300 shrink-0" aria-hidden="true" />
+              <span className="whitespace-nowrap">{t.navbar.sensorBaseline}</span>
+            </div>
           </div>
         </div>
 
@@ -101,8 +145,8 @@ export const Navbar: React.FC = () => {
             </select>
           </div>
 
-          {/* Utility Action Group: Language Toggle + Export CSV */}
-          <div className="grid grid-cols-2 md:flex items-center gap-2 w-full md:w-auto shrink-0">
+          {/* Utility Action Group: Language Toggle + Upload FIRMS + Export CSV */}
+          <div className="grid grid-cols-3 md:flex items-center gap-2 w-full md:w-auto shrink-0">
             <button
               type="button"
               data-testid="language-toggle"
@@ -118,6 +162,20 @@ export const Navbar: React.FC = () => {
 
             <button
               type="button"
+              data-testid="upload-firms-button"
+              onClick={onOpenUploadModal}
+              aria-label={t.navbar.uploadCsv}
+              className="inline-flex items-center justify-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-md bg-space-950 hover:bg-space-800 border border-space-700 hover:border-cyan-400/60 text-slate-200 transition-all focus:outline-none focus:ring-2 focus:ring-cyan-400/50 whitespace-nowrap cursor-pointer"
+            >
+              <Upload className="w-3.5 h-3.5 text-cyan-300 shrink-0" aria-hidden="true" />
+              <span>{t.navbar.uploadCsv}</span>
+            </button>
+
+            <button
+              type="button"
+              data-testid="export-csv-button"
+              onClick={handleExportCSV}
+              title={t.navbar.exportCsvTooltip}
               aria-label={t.navbar.exportCsv}
               className="inline-flex items-center justify-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-md bg-[#C2410C] hover:bg-[#9A3412] active:scale-95 text-white transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-amber-400/60 whitespace-nowrap cursor-pointer"
             >

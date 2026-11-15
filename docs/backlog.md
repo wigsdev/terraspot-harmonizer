@@ -301,8 +301,8 @@ Fulfill Challenge 15 Requirement R7:
 4. *Future Enhancement (T-08 Audit):* Include quick snapshot/image export (SVG/PNG) for the seasonal climatology and audit charts for operational field reporting.
 
 **Acceptance Criteria:**
-- [ ] **"Download Harmonized CSV"** button exports an RFC 4180 CSV containing all 27 columns specified in `docs/04-firms-data-specification.md`.
-- [ ] **"Upload Custom FIRMS CSV"** modal parses user CSV files client-side and dynamically re-renders the calendar and charts.
+- [x] **"Download Harmonized CSV"** button exports an RFC 4180 CSV containing all 27 columns specified in `docs/04-firms-data-specification.md`.
+- [x] **"Upload Custom FIRMS CSV"** modal parses user CSV files client-side and dynamically re-renders the calendar and charts.
 
 ---
 

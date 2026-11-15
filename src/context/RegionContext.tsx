@@ -35,9 +35,13 @@ export interface RegionContextType {
   catalog: RegionsCatalogDocument | null;
   isLoading: boolean;
   error: string | null;
+  customCube: RegionCube | null;
+  isCustomActive: boolean;
   setRegionId: (id: string) => void;
   setPalette: (palette: PaletteType) => void;
   reloadCatalog: () => Promise<void>;
+  setCustomCube: (cube: RegionCube) => void;
+  clearCustomCube: () => void;
 }
 
 interface FallbackSeed {
@@ -423,6 +427,7 @@ export const RegionProvider: React.FC<RegionProviderProps> = ({
   const [activePalette, setActivePalette] = useState<PaletteType>(initialPalette);
   const [isLoading, setIsLoading] = useState<boolean>(initialLoading);
   const [error, setError] = useState<string | null>(null);
+  const [customCube, setCustomCubeState] = useState<RegionCube | null>(null);
 
   const reloadCatalog = useCallback(async () => {
     setIsLoading(true);
@@ -460,6 +465,7 @@ export const RegionProvider: React.FC<RegionProviderProps> = ({
   }, [disableAutoFetch, initialCatalog, reloadCatalog]);
 
   const setRegionId = useCallback((id: string) => {
+    setCustomCubeState(null);
     setSelectedRegionId(id);
   }, []);
 
@@ -467,12 +473,23 @@ export const RegionProvider: React.FC<RegionProviderProps> = ({
     setActivePalette(palette);
   }, []);
 
+  const setCustomCube = useCallback((cube: RegionCube) => {
+    setCustomCubeState(cube);
+  }, []);
+
+  const clearCustomCube = useCallback(() => {
+    setCustomCubeState(null);
+  }, []);
+
   const currentRegion = useMemo<RegionCube | null>(() => {
+    if (customCube) {
+      return customCube;
+    }
     if (!catalog || catalog.regions.length === 0) {
       return null;
     }
     return catalog.regions.find((r) => r.id === selectedRegionId) ?? catalog.regions[0];
-  }, [catalog, selectedRegionId]);
+  }, [catalog, customCube, selectedRegionId]);
 
   const regionsList = useMemo<RegionSummary[]>(() => {
     const source = catalog?.regions ?? DEFAULT_REGIONS_CATALOG.regions;
@@ -484,6 +501,8 @@ export const RegionProvider: React.FC<RegionProviderProps> = ({
     }));
   }, [catalog]);
 
+  const isCustomActive = Boolean(customCube);
+
   const value = useMemo<RegionContextType>(
     () => ({
       selectedRegionId,
@@ -493,9 +512,13 @@ export const RegionProvider: React.FC<RegionProviderProps> = ({
       catalog,
       isLoading,
       error,
+      customCube,
+      isCustomActive,
       setRegionId,
       setPalette,
       reloadCatalog,
+      setCustomCube,
+      clearCustomCube,
     }),
     [
       selectedRegionId,
@@ -505,9 +528,13 @@ export const RegionProvider: React.FC<RegionProviderProps> = ({
       catalog,
       isLoading,
       error,
+      customCube,
+      isCustomActive,
       setRegionId,
       setPalette,
       reloadCatalog,
+      setCustomCube,
+      clearCustomCube,
     ],
   );
 

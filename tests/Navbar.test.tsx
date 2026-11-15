@@ -1,23 +1,52 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { LanguageProvider, RegionProvider, useRegion } from '../src/context';
 import { Navbar } from '../src/components/Navbar';
 
 const StateProbe: React.FC = () => {
-  const { selectedRegionId, activePalette } = useRegion();
+  const { selectedRegionId, activePalette, setCustomCube } = useRegion();
   return (
     <div data-testid="state-probe">
       <span data-testid="probe-region">{selectedRegionId}</span>
       <span data-testid="probe-palette">{activePalette}</span>
+      <button
+        type="button"
+        data-testid="probe-set-custom"
+        onClick={() =>
+          setCustomCube({
+            id: 'CUSTOM-PROBE',
+            name: 'Custom Test Cube',
+            country: 'Testland',
+            bbox: { min_lat: -10, max_lat: -9, min_lon: -76, max_lon: -75 },
+            center: [-9.5, -75.5],
+            default_zoom: 9,
+            description: 'Probe',
+            typical_fire_regime: 'Test',
+            peak_season_months: [8],
+            seasonal_beta: { '8': 1.8 },
+            validation_metrics: {
+              r_squared: 0.9,
+              pearson_r: 0.95,
+              raw_mape_pct: 40,
+              harmonized_mape_pct: 15,
+              mape_reduction_pct: 62.5,
+            },
+            climatology_by_month: {},
+            monthly_records: [],
+          })
+        }
+      >
+        Set Custom
+      </button>
     </div>
   );
 };
 
-const renderNavbar = () =>
+const renderNavbar = (onOpenUploadModal?: () => void) =>
   render(
     <LanguageProvider>
       <RegionProvider disableAutoFetch>
-        <Navbar />
+        <Navbar onOpenUploadModal={onOpenUploadModal} />
         <StateProbe />
       </RegionProvider>
     </LanguageProvider>,
@@ -28,8 +57,43 @@ describe('Navbar Component (US1 & US3)', () => {
     renderNavbar();
     expect(screen.getByText('TerraSpot Harmonizer')).toBeInTheDocument();
     expect(screen.getByText('Challenge 15')).toBeInTheDocument();
-    expect(screen.getByText('v0.9.0')).toBeInTheDocument();
+    expect(screen.getByText('v0.10.0')).toBeInTheDocument();
     expect(screen.getByText('MODIS (2000–2026) + VIIRS (2012–2026)')).toBeInTheDocument();
+  });
+
+  it('renders Upload FIRMS CSV button and invokes onOpenUploadModal when clicked', () => {
+    const handleOpen = vi.fn();
+    renderNavbar(handleOpen);
+    const uploadBtn = screen.getByTestId('upload-firms-button');
+    expect(uploadBtn).toBeInTheDocument();
+    fireEvent.click(uploadBtn);
+    expect(handleOpen).toHaveBeenCalledTimes(1);
+  });
+
+  it('renders Export CSV button with telemetry tooltip', () => {
+    renderNavbar();
+    const exportBtn = screen.getByTestId('export-csv-button');
+    expect(exportBtn).toBeInTheDocument();
+    expect(exportBtn).toHaveAttribute(
+      'title',
+      'Download standardized 27-column RFC 4180 CSV dataset',
+    );
+  });
+
+  it('displays persistent Custom Data badge and reset button when custom cube is active', () => {
+    renderNavbar();
+    expect(screen.queryByTestId('custom-data-badge')).not.toBeInTheDocument();
+
+    const setCustomBtn = screen.getByTestId('probe-set-custom');
+    fireEvent.click(setCustomBtn);
+
+    expect(screen.getByTestId('custom-data-badge')).toBeInTheDocument();
+    expect(screen.getByText(/Custom Data Active/i)).toBeInTheDocument();
+
+    const resetBtn = screen.getByTestId('reset-benchmark-button');
+    fireEvent.click(resetBtn);
+
+    expect(screen.queryByTestId('custom-data-badge')).not.toBeInTheDocument();
   });
 
   it('populates all 5 benchmark regions and updates RegionContext upon selection', () => {

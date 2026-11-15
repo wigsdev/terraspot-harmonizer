@@ -7,3 +7,4 @@ export * from './map';
 export * from './matrix';
 export * from './climatology';
 export * from './regime';
+export * from './csv';

@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "source": "Meteomatics Weather API (NASA Space Apps Challenge Global Offer)",
+    "retrieved_at": "2026-11-15T15:38:22.585222+00:00",
+    "parameters": [
+      "forest_fire_warning:idx",
+      "t_2m:C",
+      "relative_humidity_2m:p",
+      "wind_speed_10m:ms",
+      "wind_gusts_10m_1h:ms",
+      "precip_24h:mm",
+      "evapotranspiration_24h:mm"
+    ]
+  },
+  "regions": {
+    "PE-HCO": {
+      "name": "Hu\u00e1nuco & Central Peruvian Andes",
+      "coordinates": [
+        -9.5,
+        -75.75
+      ],
+      "metrics": {
+        "forest_fire_warning:idx": 0.0,
+        "t_2m:C": 19.1,
+        "relative_humidity_2m:p": 77.7,
+        "wind_speed_10m:ms": 2.4,
+        "wind_gusts_10m_1h:ms": 8.3,
+        "precip_24h:mm": 15.45,
+        "evapotranspiration_24h:mm": 3.38
+      }
+    },
+    "US-CAL": {
+      "name": "California Sierra & Coastal Ranges",
+      "coordinates": [
+        38.75,
+        -121.15
+      ],
+      "metrics": {
+        "forest_fire_warning:idx": 0.5,
+        "t_2m:C": 12.2,
+        "relative_humidity_2m:p": 64.3,
+        "wind_speed_10m:ms": 2.6,
+        "wind_gusts_10m_1h:ms": 4.2,
+        "precip_24h:mm": 0.0,
+        "evapotranspiration_24h:mm": 1.48
+      }
+    },
+    "BR-PAN": {
+      "name": "Pantanal Tropical Wetlands",
+      "coordinates": [
+        -17.5,
+        -56.75
+      ],
+      "metrics": {
+        "forest_fire_warning:idx": 0.5,
+        "t_2m:C": 28.5,
+        "relative_humidity_2m:p": 76.8,
+        "wind_speed_10m:ms": 3.0,
+        "wind_gusts_10m_1h:ms": 8.9,
+        "precip_24h:mm": 7.92,
+        "evapotranspiration_24h:mm": 5.39
+      }
+    },
+    "AU-NSW": {
+      "name": "New South Wales Eucalyptus Forest Belt",
+      "coordinates": [
+        -33.85,
+        150.25
+      ],
+      "metrics": {
+        "forest_fire_warning:idx": 0.1,
+        "t_2m:C": 12.4,
+        "relative_humidity_2m:p": 97.5,
+        "wind_speed_10m:ms": 1.1,
+        "wind_gusts_10m_1h:ms": 3.2,
+        "precip_24h:mm": 0.26,
+        "evapotranspiration_24h:mm": 4.49
+      }
+    },
+    "PT-CEN": {
+      "name": "Central Portugal Pine & Eucalyptus Belt",
+      "coordinates": [
+        40.2,
+        -7.9
+      ],
+      "metrics": {
+        "forest_fire_warning:idx": 0.0,
+        "t_2m:C": 10.8,
+        "relative_humidity_2m:p": 90.7,
+        "wind_speed_10m:ms": 6.0,
+        "wind_gusts_10m_1h:ms": 11.9,
+        "precip_24h:mm": 2.38,
+        "evapotranspiration_24h:mm": 0.43
+      }
+    }
+  }
+}

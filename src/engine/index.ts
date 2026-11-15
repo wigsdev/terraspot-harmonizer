@@ -10,3 +10,5 @@ export * from './spatialGrid';
 export * from './calendarMatrix';
 export * from './climatologyEngine';
 export * from './fireRegime';
+export * from './csvExporter';
+export * from './firmsIngestion';

@@ -18,6 +18,10 @@ export interface BilingualDictionary {
     paletteSelectAria: string;
     languageToggleAria: string;
     exportCsv: string;
+    uploadCsv: string;
+    customDataBadge: string;
+    resetBenchmark: string;
+    exportCsvTooltip: string;
   };
   regionNames: Record<string, string>;
   regionCountries: Record<string, string>;
@@ -266,6 +270,47 @@ export interface BilingualDictionary {
       regimeIndex: string;
     };
     zeroFireNotice: string;
+  };
+  customCsvModal: {
+    title: string;
+    subtitle: string;
+    dropzoneTitle: string;
+    dropzoneSubtitle: string;
+    dropzoneActive: string;
+    selectFileButton: string;
+    loadSampleButton: string;
+    loadingSample: string;
+    parsingFile: string;
+    applyButton: string;
+    resetButton: string;
+    closeButton: string;
+    report: {
+      statusValid: string;
+      statusInvalid: string;
+      fileName: string;
+      fileSize: string;
+      totalRows: string;
+      validHotspots: string;
+      excludedRows: string;
+      detectedSensors: string;
+      dateRange: string;
+      boundingBox: string;
+      fireWeatherIndicators: string;
+    };
+    weatherCard: {
+      fireWarningIndex: string;
+      soilMoisture: string;
+      windSpeed: string;
+      relativeHumidity: string;
+      providerNote: string;
+    };
+    errors: {
+      emptyFile: string;
+      missingColumns: string;
+      invalidDates: string;
+      invalidCoords: string;
+      parseError: string;
+    };
   };
   monthNamesShort: string[];
 }

@@ -539,11 +539,11 @@ export const BurningCalendarMatrix: React.FC<BurningCalendarMatrixProps> = ({
           data-testid="matrix-tooltip"
           role="tooltip"
           style={{
-            left: `${tooltipPos.x}px`,
-            top: `${tooltipPos.y - 12}px`,
-            transform: "translate(-50%, -100%)",
+            left: `${Math.max(120, Math.min(typeof window !== "undefined" ? window.innerWidth - 120 : 300, tooltipPos.x))}px`,
+            top: `${tooltipPos.y < 220 ? tooltipPos.y + 24 : tooltipPos.y - 12}px`,
+            transform: tooltipPos.y < 220 ? "translate(-50%, 0)" : "translate(-50%, -100%)",
           }}
-          className="fixed z-50 pointer-events-none min-w-56 rounded-xl border border-slate-700 bg-space-950/95 p-3.5 shadow-2xl backdrop-blur-md transition-opacity duration-150 animate-in fade-in zoom-in-95"
+          className="fixed z-50 pointer-events-none min-w-56 max-w-[calc(100vw-24px)] rounded-xl border border-slate-700 bg-space-950/95 p-3.5 shadow-2xl backdrop-blur-md transition-opacity duration-150 animate-in fade-in zoom-in-95"
         >
           {/* Tooltip Header */}
           <div className="flex items-center justify-between border-b border-slate-800 pb-2">

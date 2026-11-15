@@ -11,11 +11,26 @@ and this project adheres to [Semantic Versioning (SemVer 2.0.0)](https://semver.
 
 ### Planned
 
-- **Sprint 1 (`T-03`):** Scientific Python pipeline (`scripts/build_harmonized_cubes.py`) for NASA FIRMS historical archive processing (MODIS C6.1 and VIIRS 375m C2, 2000–2026).
 - **Sprint 1 (`T-04`):** Pure TypeScript mathematical engine (`harmonizer.ts`) implementing the *TerraSpot 4-Stage* algorithm and accessible color scales (`colorRamps.ts`).
 - **Sprint 2 (`T-05`, `T-06`):** *NASA Mission Control* design system, KPI summary cards, and interactive Leaflet WebGIS canvas with bounding box drawing and NASA GIBS WMTS satellite tile overlays.
 - **Sprint 3 (`T-07`, `T-08`, `T-09`, `T-10`):** 27-year × 12-month *Burning Activity Calendar Matrix*, climatological anomaly curves, sensor audit view, agricultural vs. wildfire regime classifier, and standardized CSV exporter/uploader.
 - **Sprint 4 (`T-11`, `T-12`):** Public HTTPS edge deployment, executive 7-slide presentation deck in English, and final `1.0.0` release.
+
+---
+
+## [0.3.0] - 2026-11-14
+
+### Added
+
+- **NASA FIRMS Data Engineering Pipeline (`T-03`):** Implemented deterministic Python 3.13 (`uv` / PEP 723, `SEED = 202615`) pipeline in `scripts/build_harmonized_cubes.py` executing the 4-stage MODIS Collection 6.1 & VIIRS 375m Collection 2 harmonization engine with `--verify` invariant validation.
+- **Calibrated Multi-Decadal Benchmark Cubes (`T-03`):** Generated `public/data/regions_catalog.json` spanning `2000-01` through `2026-10` (322 monthly records per region) across the 5 benchmark Areas of Interest (`PE-HCO`, `SAM-MAP`, `AR-PAR`, `US-CAL`, `AU-NSW`) achieving $R^2 \in [0.9677, 0.9819]$ and cross-sensor MAPE reductions between `85.45%` and `87.83%`.
+- **0.01° Active Fire Spatial Grid Cells (`T-03`):** Generated `public/data/firms_spatial_cells.json` with 250 pre-indexed $0.01^\circ$ hotspot cell summaries (`lat`, `lon`, `total_afcd`, `mean_frp_mw`, `p90_frp_mw`, `night_fraction`, `regime_class`, `yearly_afcd`) strictly enclosed within each AOI bounding box.
+- **Standardized Sample FIRMS CSV Fixture (`T-03`):** Generated `public/data/sample_firms_huanuco.csv` (1,200 RFC 4180 15-column NASA FIRMS rows for Huánuco `PE-HCO`, including 60 intentional Stage 1 noise detections to validate `type == 0` and confidence masking).
+- **Synchronized TypeScript Contracts & Vitest Validation (`T-03`):** Extended `src/types/` (`firms.ts`, `harmonization.ts`, `region.ts`) with `RegionsCatalogDocument`, `RegionCube`, `ValidationMetrics`, `MonthlyClimatology`, `SpatialGridCellSummary`, and `SpatialCellsDocument`, verified by the contract & math test suite in `tests/dataPipeline.test.ts`.
+
+### Changed
+
+- **Tailwind CSS v4 Canonical `@theme` Alignment:** Replaced arbitrary hex utility classes in `index.html` and `src/App.tsx` with canonical semantic tokens defined in `src/index.css` (`bg-space-950`, `bg-space-900`, `border-space-800`, `thermal-500`, `thermal-600`, `radar-cyan`, `status-success`) to resolve `suggestCanonicalClasses` diagnostics.
 
 ---
 

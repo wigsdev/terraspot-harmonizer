@@ -145,6 +145,74 @@ export interface BilingualDictionary {
       viewModeGroup: string;
     };
   };
+  climatology: {
+    title: string;
+    subtitle: string;
+    yearSelectAria: string;
+    activeYearLabel: string;
+    baselineMedian: string;
+    iqrEnvelope: string;
+    p90Threshold: string;
+    anomalyTrajectory: string;
+    selectYearPlaceholder: string;
+    tooltip: {
+      month: string;
+      observed: string;
+      baseline: string;
+      iqr: string;
+      departure: string;
+      zScore: string;
+      alert: string;
+      futurePending: string;
+    };
+    alerts: {
+      normal: string;
+      elevated: string;
+      critical: string;
+      pending: string;
+    };
+  };
+  sensorAudit: {
+    title: string;
+    subtitle: string;
+    layerGroupAria: string;
+    layers: {
+      rawModis: string;
+      rawViirs: string;
+      afcd: string;
+      harmonized: string;
+    };
+    stepJumpCallout: {
+      badge: string;
+      title: string;
+      description: string;
+    };
+    scorecards: {
+      title: string;
+      r2: string;
+      r2Desc: string;
+      pearson: string;
+      pearsonDesc: string;
+      mape: string;
+      mapeDesc: string;
+      rmse: string;
+      rmseDesc: string;
+    };
+    betaFactors: {
+      title: string;
+      subtitle: string;
+      factorLabel: string;
+      overlapYears: string;
+    };
+    tooltip: {
+      period: string;
+      rawModis: string;
+      rawViirs: string;
+      afcd: string;
+      harmonized: string;
+      era: string;
+    };
+  };
   monthNamesShort: string[];
 }
 

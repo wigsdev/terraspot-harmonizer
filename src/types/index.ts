@@ -5,3 +5,4 @@ export * from './palette';
 export * from './language';
 export * from './map';
 export * from './matrix';
+export * from './climatology';

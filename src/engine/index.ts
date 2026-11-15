@@ -4,3 +4,4 @@
 
 export * from './harmonizer';
 export * from './colorRamps';
+export * from './kpiCalculator';

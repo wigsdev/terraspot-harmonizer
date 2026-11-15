@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TerraSpot Spatial Grid Cells Schema",
+  "type": "object",
+  "required": ["generated_at", "grid_resolution_deg", "total_cells", "cells"],
+  "properties": {
+    "generated_at": { "type": "string" },
+    "grid_resolution_deg": { "type": "number", "const": 0.01 },
+    "total_cells": { "type": "integer", "minimum": 100 },
+    "cells": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "region_id",
+          "grid_x",
+          "grid_y",
+          "lat",
+          "lon",
+          "total_afcd",
+          "peak_month",
+          "mean_frp_mw",
+          "p90_frp_mw",
+          "night_fraction",
+          "regime_class",
+          "yearly_afcd"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TerraSpot Regions Catalog Schema",
+  "type": "object",
+  "required": ["generated_at", "methodology_version", "grid_resolution_deg", "temporal_coverage", "regions"],
+  "properties": {
+    "generated_at": { "type": "string" },
+    "methodology_version": { "type": "string", "const": "TerraSpot-4Stage-v1.0" },
+    "grid_resolution_deg": { "type": "number", "const": 0.01 },
+    "temporal_coverage": {
+      "type": "object",
+      "required": ["start", "end", "total_months", "climatology_baseline", "overlap_window"],
+      "properties": {
+        "start": { "type": "string", "const": "2000-01" },
+        "end": { "type": "string", "const": "2026-10" },
+        "total_months": { "type": "integer", "const": 322 },
+        "climatology_baseline": { "type": "array", "items": { "type": "integer" }, "minItems": 2, "maxItems": 2 },
+        "overlap_window": { "type": "array", "items": { "type": "integer" }, "minItems": 2, "maxItems": 2 }
+      }
+    },
+    "regions": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "country",
+          "bbox",
+          "center",
+          "default_zoom",
+          "description",
+          "typical_fire_regime",
+          "peak_season_months",
+          "seasonal_beta",
+          "validation_metrics",
+          "climatology_by_month",
+          "monthly_records"
+        ]
+      }
+    }
+  }
+}

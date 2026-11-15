@@ -79,7 +79,7 @@ const CustomRegimeTooltip: React.FC<CustomTooltipProps> = ({ active, payload, t 
   return (
     <div
       data-testid="regime-telemetry-tooltip"
-      className="rounded-lg border border-slate-700 bg-[#0B0F17]/95 p-3.5 shadow-2xl backdrop-blur-md text-xs font-mono max-w-xs z-50 text-slate-200"
+      className="rounded-lg border border-slate-700 bg-space-950/95 p-3.5 shadow-2xl backdrop-blur-md text-xs font-mono max-w-xs z-50 text-slate-200"
     >
       <div className="flex items-center justify-between gap-2 border-b border-slate-800 pb-2 mb-2">
         <span className="font-semibold text-slate-100 flex items-center gap-1.5">
@@ -94,7 +94,7 @@ const CustomRegimeTooltip: React.FC<CustomTooltipProps> = ({ active, payload, t 
       <div className="space-y-1.5">
         <div className="flex justify-between items-center">
           <span className="text-slate-400">{t.fireRegime.tooltip.regime}:</span>
-          <span className="font-medium text-slate-200 text-right truncate max-w-[140px]">{regimeName}</span>
+          <span className="font-medium text-slate-200 text-right truncate max-w-35">{regimeName}</span>
         </div>
         <div className="flex justify-between items-center">
           <span className="text-slate-400">{t.fireRegime.tooltip.meanFrp}:</span>
@@ -153,7 +153,7 @@ export const FireRegimePanel: React.FC<FireRegimePanelProps> = ({
     return (
       <div
         data-testid="fire-regime-panel-loading"
-        className="rounded-xl border border-slate-800 bg-[#0B0F17] p-8 text-center text-slate-400"
+        className="rounded-xl border border-slate-800 bg-space-950 p-8 text-center text-slate-400"
       >
         <Activity className="mx-auto mb-3 h-8 w-8 animate-pulse text-cyan-500" />
         <p className="font-medium text-slate-300">Loading Fire Regime Diagnostics...</p>
@@ -184,13 +184,13 @@ export const FireRegimePanel: React.FC<FireRegimePanelProps> = ({
   return (
     <div
       data-testid="fire-regime-panel"
-      className={`rounded-xl border border-slate-800 bg-[#0B0F17] p-6 shadow-2xl ${className}`}
+      className={`rounded-xl border border-slate-800 bg-space-950 p-6 shadow-2xl ${className}`}
     >
       {/* 1. Header Section */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-5 mb-6">
         <div>
           <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-            <span className="rounded bg-gradient-to-r from-emerald-500/20 via-amber-500/20 to-red-500/20 border border-slate-700 px-2.5 py-0.5 text-[11px] font-bold text-slate-300 uppercase tracking-wider">
+            <span className="rounded bg-linear-to-r from-emerald-500/20 via-amber-500/20 to-red-500/20 border border-slate-700 px-2.5 py-0.5 text-[11px] font-bold text-slate-300 uppercase tracking-wider">
               NASA Challenge 15 • Req R6
             </span>
             <span className="rounded bg-cyan-950/50 border border-cyan-700/40 px-2 py-0.5 text-[11px] font-mono text-cyan-300">
@@ -378,7 +378,7 @@ export const FireRegimePanel: React.FC<FireRegimePanelProps> = ({
           </div>
         </div>
 
-        <div className="w-full h-[380px]" data-testid="scatter-chart-container">
+        <div className="w-full h-95" data-testid="scatter-chart-container">
           <ResponsiveContainer width="100%" height="100%">
             <ScatterChart margin={{ top: 20, right: 30, bottom: 25, left: 15 }}>
               {/* Shaded Quadrant Zones */}

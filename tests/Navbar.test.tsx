@@ -57,7 +57,7 @@ describe('Navbar Component (US1 & US3)', () => {
     renderNavbar();
     expect(screen.getByText('TerraSpot Harmonizer')).toBeInTheDocument();
     expect(screen.getByText('Challenge 15')).toBeInTheDocument();
-    expect(screen.getByText('v0.11.0')).toBeInTheDocument();
+    expect(screen.getByText('v1.0.0')).toBeInTheDocument();
     expect(screen.getByText('MODIS (2000–2026) + VIIRS (2012–2026)')).toBeInTheDocument();
   });
 

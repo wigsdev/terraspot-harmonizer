@@ -279,8 +279,8 @@ Develop the scientific validation chart panels (Requirements R1 and R5):
 Implement the analytical module fulfilling TerraSpot Harmonizer's core domain value proposition (Requirement R6): separating **seasonal agricultural burning** (daytime, low FRP, crop stubble management) from **severe forest wildfires** (high FRP, high nocturnal persistence). Features an FRP vs. Nighttime Persistence scatter plot, percentage distribution breakdown, and operational recommendations for civil defense and agricultural authorities.
 
 **Acceptance Criteria:**
-- [ ] Interactive scatter plot separating monthly records into three quadrants: *Seasonal Agricultural Burn*, *Mixed Transitional*, and *Severe Wildfire Event*.
-- [ ] Context-aware operational recommendations based on active AOI conditions.
+- [x] Interactive scatter plot separating monthly records into three quadrants: *Seasonal Agricultural Burn*, *Mixed Transitional*, and *Severe Wildfire Event*.
+- [x] Context-aware operational recommendations based on active AOI conditions.
 
 ---
 
@@ -343,6 +343,6 @@ Construct the interactive **7-slide presentation deck** in English (strictly mee
 1. *NASA Global Offers Integration:* Feature **Meteomatics Weather API**, **GoDaddy / Porkbun**, **Microsoft Planetary Computer**, **GitHub Copilot**, and **Miro** across Slides 3, 5, 6, and the official submission form fields to maximize the *Partner Resources & Global Offers* rubric score.
 
 **Acceptance Criteria:**
-- [ ] Exactly **7 slides in English** presenting TerraSpot Harmonizer architecture, results, and Huánuco/Amazon case studies.
-- [ ] All submission form text fields verified in English and ready for submission before the deadline, with Global Offers declared.
-- [ ] Version `1.0.0` tagged and recorded in `CHANGELOG.md`.
+- [x] Exactly **7 slides in English** presenting TerraSpot Harmonizer architecture, results, and Huánuco/Amazon case studies.
+- [x] All submission form text fields verified in English and ready for submission before the deadline, with Global Offers declared.
+- [x] Version `1.0.0` tagged and recorded in `CHANGELOG.md`.

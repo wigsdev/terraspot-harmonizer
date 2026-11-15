@@ -91,6 +91,60 @@ export interface BilingualDictionary {
     noCellsDetected: string;
     gibsReferenceDateLabel: string;
   };
+  matrix: {
+    title: string;
+    subtitle: string;
+    modes: {
+      harmonized: string;
+      harmonizedTooltip: string;
+      anomaly: string;
+      anomalyTooltip: string;
+      frp: string;
+      frpTooltip: string;
+      raw: string;
+      rawTooltip: string;
+    };
+    eras: {
+      modisSolo: string;
+      dualFusion: string;
+      viirsContinuity: string;
+    };
+    marginalLabels: {
+      annualSum: string;
+      monthlyMedian: string;
+      scrollHint: string;
+    };
+    legend: {
+      low: string;
+      high: string;
+      negativeDeparture: string;
+      baselineMedian: string;
+      positiveDeparture: string;
+      futureMonth: string;
+      criticalAnomalyBadge: string;
+    };
+    stepJumpNotice: string;
+    futureMonthBadge: string;
+    tooltip: {
+      yearMonth: string;
+      sensorEra: string;
+      harmonizedCount: string;
+      rawModis: string;
+      rawViirs: string;
+      baselineMedian: string;
+      departure: string;
+      robustZ: string;
+      meanFrp: string;
+      nightFraction: string;
+      status: string;
+      regime: string;
+    };
+    aria: {
+      gridLabel: string;
+      cellSelected: string;
+      viewModeGroup: string;
+    };
+  };
   monthNamesShort: string[];
 }
 

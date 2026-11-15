@@ -74,4 +74,26 @@ describe('App Integration (T-05 Mission Navigation, KPIs & T-06 WebGIS Map)', ()
     fireEvent.click(anomalyBtn);
     expect(anomalyBtn).toHaveAttribute('data-active', 'true');
   });
+
+  it('renders ClimatologyAnomalyChart and SensorHarmonizationAudit with bidirectional synchronization', () => {
+    render(<App />);
+
+    // Verify ClimatologyAnomalyChart mounted
+    expect(screen.getByTestId('climatology-anomaly-chart')).toBeInTheDocument();
+    const yearSelect = screen.getByTestId('climatology-year-select') as HTMLSelectElement;
+    expect(yearSelect.value).toBe('2024');
+
+    // Verify SensorHarmonizationAudit mounted with step-jump and scorecards
+    expect(screen.getByTestId('sensor-harmonization-audit')).toBeInTheDocument();
+    expect(screen.getByTestId('step-jump-callout')).toBeInTheDocument();
+    expect(screen.getByTestId('model-fit-scorecards')).toBeInTheDocument();
+    expect(screen.getByTestId('beta-factors-breakdown')).toBeInTheDocument();
+
+    // Select a cell in BurningCalendarMatrix for year 2020
+    const cell2020Aug = screen.getByTestId('cell-2020-8');
+    fireEvent.click(cell2020Aug);
+
+    // Verify Climatology year updated to 2020 via bidirectional synchronization
+    expect((screen.getByTestId('climatology-year-select') as HTMLSelectElement).value).toBe('2020');
+  });
 });

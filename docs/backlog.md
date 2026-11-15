@@ -260,9 +260,9 @@ Develop the scientific validation chart panels (Requirements R1 and R5):
 2. `SensorHarmonizationAudit.tsx`: Displays the full interannual 2000–2026 time series comparing raw MODIS (1 km), raw VIIRS (375 m), 1 km active cell-days, and the **Final Harmonized Series**, accompanied by statistical model fit cards ($R^2$, monthly $\beta_m$ factors, and MAPE reduction).
 
 **Acceptance Criteria:**
-- [ ] Interactive climatological chart with year selector comparing active season against baseline medians.
-- [ ] Sensor audit plot demonstrating visual elimination of the 2012 sensor step-jump.
-- [ ] Display of calculated monthly calibration factors $\beta_1 \dots \beta_{12}$ for the selected AOI.
+- [x] Interactive climatological chart with year selector comparing active season against baseline medians.
+- [x] Sensor audit plot demonstrating visual elimination of the 2012 sensor step-jump.
+- [x] Display of calculated monthly calibration factors $\beta_1 \dots \beta_{12}$ for the selected AOI.
 
 ---
 
@@ -297,6 +297,7 @@ Implement the analytical module fulfilling TerraSpot Harmonizer's core domain va
 Fulfill Challenge 15 Requirement R7:
 1. `csvExporter.ts`: Generate and download with one click the complete 27-year × 12-month CSV dataset for the active AOI (including raw counts, AFCD, $\beta_m$, harmonized counts, historical medians, anomalies, $Z$-scores, FRP, and regime classifications).
 2. `CustomCSVModal.tsx`: Modal interface allowing scientists and judges to upload raw NASA FIRMS CSV files (MODIS or VIIRS) or load the provided `sample_firms_huanuco.csv` for real-time in-browser harmonization.
+3. *Future Enhancement (T-08 Audit):* Include quick snapshot/image export (SVG/PNG) for the seasonal climatology and audit charts for operational field reporting.
 
 **Acceptance Criteria:**
 - [ ] **"Download Harmonized CSV"** button exports an RFC 4180 CSV containing all 27 columns specified in `docs/04-firms-data-specification.md`.
@@ -317,6 +318,7 @@ Fulfill Challenge 15 Requirement R7:
 
 **Description & Technical Context:**  
 Perform final UI/UX polish, cross-device responsiveness verification, compile clean static production bundle (`pnpm build` with zero warnings), and deploy to a public HTTPS URL without passwords or access restrictions (Requirement R8).
+1. *Future Enhancement (T-08 Audit):* Implement docked bottom positioning or compact mode for floating telemetry tooltips on ultra-small mobile screens ($< 360\text{ px}$).
 
 **Acceptance Criteria:**
 - [ ] `pnpm build` compiles cleanly with zero TypeScript errors and zero critical warnings.

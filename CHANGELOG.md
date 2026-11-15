@@ -11,8 +11,38 @@ and this project adheres to [Semantic Versioning (SemVer 2.0.0)](https://semver.
 
 ### Planned
 
-- **Sprint 3 (`T-08`, `T-09`, `T-10`):** Climatological anomaly curves, sensor audit view, agricultural vs. wildfire regime classifier, and standardized CSV exporter/uploader.
+- **Sprint 3 (`T-09`, `T-10`):** Agricultural vs. wildfire regime diagnostic classifier, and standardized RFC 4180 CSV exporter / in-browser FIRMS uploader.
 - **Sprint 4 (`T-11`, `T-12`):** Public HTTPS edge deployment, executive 7-slide presentation deck in English, and final `1.0.0` release.
+
+---
+
+## [0.8.0] - 2026-11-15
+
+### Added
+
+- **Seasonal Climatology & Anomaly Envelope Curve Panel (`T-08` / US1 MVP):** Implemented `src/components/ClimatologyAnomalyChart.tsx` with Recharts `ComposedChart`:
+  - 12-month calendar trajectory plotting active observation year vs 2001–2025 non-parametric median curve ($M_m$).
+  - Shaded floating interquartile range (IQR) envelope area ($P_{25}\text{--}P_{75}$) depicting normal seasonal bounds.
+  - Dashed amber/crimson line denoting the critical $P_{90}$ disaster anomaly threshold.
+  - Interactive year selector dropdown (2000–2026) with bidirectional synchronization to `BurningCalendarMatrix` cell click events.
+  - Dynamic trajectory dots color-coded by anomaly severity (cyan for normal, amber for elevated $> P_{75}$, crimson for critical $\ge P_{90}$).
+  - Future month safeguards: November and December 2026 plotted with `connectNulls={false}` to avoid artificial drops to zero.
+  - Floating dark aerospace hover tooltip with exact hotspot counts, baseline median, percentage departure ($\Delta\%$), and robust $Z$-score.
+- **Sensor Harmonization Audit & Multi-Decadal Discontinuity Timeline (`T-08` / US2):** Implemented `src/components/SensorHarmonizationAudit.tsx` with Recharts `LineChart`:
+  - Continuous 27-year time series ($2000\text{--}2026$, 322 monthly timestamps) tracking all 4 sensor harmonization stages.
+  - Interactive layer visibility toggle pills for Raw MODIS C6.1 ($1\text{ km}$, yellow), Raw VIIRS C2 ($375\text{ m}$, purple), $0.01^\circ$ Active Fire Cell-Days (AFCD, cyan), and Final Harmonized Series ($H_{y,m}$, emerald).
+  - Visual callout banner and chart `ReferenceArea` / `ReferenceLine` disclosing the artificial threefold step-jump in 2012 caused by VIIRS's finer spatial resolution ($375\text{ m}$ vs $1\text{ km}$), confirming bias-free physical continuity across the 2011–2012 boundary.
+- **Scientific Model Fit Scorecards & Seasonal Calibration Factors (`T-08` / US3):**
+  - 4 statistical scorecards displaying Coefficient of Determination ($R^2 \ge 0.90$), Pearson correlation coefficient ($r \ge 0.95$), MAPE bias reduction ($\ge 65\%$, e.g. $83.4\% \rightarrow 12.0\%$), and Root Mean Square Error (RMSE in AFCD units).
+  - 12-month regional calibration factor visual breakdown ($\beta_1 \dots \beta_{12} = \text{median}(AFCD_{\text{VIIRS}, m} / AFCD_{\text{MODIS}, m})$) with proportional mini-bars and 14-year overlap baseline context (2012–2025).
+- **Climatology & Audit Data Transform Engine (`T-08`):** Implemented `src/engine/climatologyEngine.ts` (`generateClimatologyCurveData`, `generateSensorAuditSeries`, `extractBetaFactorEntries`) and domain contracts in `src/types/climatology.ts`.
+- **Bilingual Internationalization (`T-08`):** Added complete English and Spanish localized dictionaries in `src/types/language.ts` and `src/context/LanguageContext.tsx` for chart titles, series labels, scorecards, tooltips, and accessibility alerts.
+- **Automated Verification Suites (`T-08`):** Added `tests/ClimatologyAnomalyChart.test.tsx` (5 tests), `tests/SensorHarmonizationAudit.test.tsx` (6 tests), and extended `tests/App.test.tsx` with bidirectional synchronization tests, achieving 11 test files and 83/83 passing tests with 100% success rate.
+
+### Changed
+
+- **Mission Workspace Shell Integration (`T-08`):** Mounted `ClimatologyAnomalyChart` and `SensorHarmonizationAudit` into `src/App.tsx` below `BurningCalendarMatrix` with active year state binding.
+- **Semantic Version Bump (`T-08`):** Updated version to `0.8.0` in `package.json` and `src/context/LanguageContext.tsx`.
 
 ---
 

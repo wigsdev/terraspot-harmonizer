@@ -1,15 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Globe2 } from 'lucide-react';
 import { LanguageProvider, RegionProvider, useLanguage, useRegion } from './context';
-import { Navbar, KPISummaryCards, MapAOISelector, BurningCalendarMatrix } from './components';
+import {
+  Navbar,
+  KPISummaryCards,
+  MapAOISelector,
+  BurningCalendarMatrix,
+  ClimatologyAnomalyChart,
+  SensorHarmonizationAudit,
+} from './components';
 
 const DashboardContent: React.FC = () => {
   const { language, t } = useLanguage();
   const { currentRegion, selectedRegionId } = useRegion();
+  const [selectedYear, setSelectedYear] = useState<number>(2024);
 
   const regionName = t.regionNames[selectedRegionId] ?? currentRegion?.name ?? selectedRegionId;
   const countryName = t.regionCountries[selectedRegionId] ?? currentRegion?.country ?? '';
   const bbox = currentRegion?.bbox;
+
+  const handleMatrixSelectRecord = (record: { year: number }) => {
+    setSelectedYear(record.year);
+  };
 
   return (
     <div className="min-h-screen bg-space-950 text-[#E2E8F0] flex flex-col font-sans selection:bg-thermal-500/30 selection:text-white">
@@ -50,7 +62,16 @@ const DashboardContent: React.FC = () => {
         <MapAOISelector />
 
         {/* Interactive 27-Year Burning Activity Calendar Matrix (T-07) */}
-        <BurningCalendarMatrix />
+        <BurningCalendarMatrix onSelectRecord={handleMatrixSelectRecord} />
+
+        {/* Climatological Seasonal Curves & Anomaly Envelope (T-08 User Story 1 - P1 MVP) */}
+        <ClimatologyAnomalyChart
+          selectedYear={selectedYear}
+          onYearChange={setSelectedYear}
+        />
+
+        {/* Multi-Decadal Sensor Harmonization Audit & Discontinuity Analysis (T-08 User Stories 2 & 3 - P2 & P3) */}
+        <SensorHarmonizationAudit />
       </main>
 
       <footer className="border-t border-space-800 bg-space-950 px-4 py-3 sm:px-6 sm:py-4 text-[11px] sm:text-xs text-slate-400">

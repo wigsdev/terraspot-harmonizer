@@ -54,9 +54,11 @@ TerraSpot Harmonizer transforms fragmented multi-mission satellite fire detectio
 - Preserves the scientific value of NASA's two-decade MODIS legacy as the Earth observation community transitions fully to VIIRS.
 
 ### Tools, Coding Languages, and Software Used
-- Frontend & Visualization: React 19, TypeScript, Vite, Tailwind CSS, Recharts, Custom SVG Matrix Engine, Leaflet / React-Leaflet.
-- Geospatial & Data Processing: Python 3 (data preparation and validation scripts), TypeScript client-side harmonization engine, NASA GIBS WMTS satellite imagery layers.
-- Hosting & Version Control: GitHub, Vercel (serverless static edge deployment).
+- Frontend & Visualization: React 19, TypeScript, Vite, Tailwind CSS v4, Recharts, Custom Heatmap Matrix Engine, Leaflet / React-Leaflet.
+- Geospatial & Data Processing: Python 3 (data cubes compilation), TypeScript client-side harmonization engine, NASA GIBS WMTS satellite imagery layers.
+- Hosting, Edge Network & Custom Domain (NASA Global Offers): Vercel Edge Network, GoDaddy Registry & Porkbun custom domain (`https://terraspot-harmonizer.space`), GitHub.
+- Live Public Application URL (Requirement R8): https://terraspot-harmonizer.vercel.app
+- Source Code Repository: https://github.com/wigsdev/terraspot-harmonizer
 ```
 
 ---

@@ -11,7 +11,35 @@ and this project adheres to [Semantic Versioning (SemVer 2.0.0)](https://semver.
 
 ### Planned
 
-- **Sprint 4 (`T-11`, `T-12`):** Public HTTPS edge deployment, executive 7-slide presentation deck in English, and final `1.0.0` release.
+- **Sprint 4 (`T-12`):** Executive 7-slide presentation deck in English, final project pitch verification, and final `1.0.0` release.
+
+---
+
+## [0.11.0] - 2026-11-15
+
+### Added
+
+- **Modular Rolldown/Rollup Vendor Chunk Splitting (`vite.config.ts`) (T-11):**
+  - Granular `manualChunks` partitioning separating third-party runtime dependencies into cacheable discrete bundles: `vendor-react` (~219 kB), `vendor-charts` (~422 kB), `vendor-gis` (~157 kB), `vendor-icons`, and `vendor-utils` (~18 kB).
+  - Main application index bundle reduced by $83\%$ from $989\text{ kB}$ down to $170\text{ kB}$ uncompressed ($45\text{ kB}$ gzipped).
+  - Completely eliminated the monolithic bundle warning (`Some chunks are larger than 500 kB after minification`) with clean compilation in $< 4.5\text{ s}$.
+- **Edge Deployment Manifest & Security Headers (`vercel.json`) (NASA Space Apps Challenge 15 Requirement R8):**
+  - Production static SPA configuration with clean rewrites (`/(.*) -> /index.html`) and zero-latency edge caching.
+  - Strict security headers: `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: strict-origin-when-cross-origin`, and `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload`.
+  - Immutable 1-year cache headers (`Cache-Control: public, max-age=31536000, immutable`) for all hashed static assets under `/assets/`.
+- **Public Production Deployment & NASA Global Offers Documentation (`README.md` & `docs/05-submission-pitch-rubric-plan.md`):**
+  - Universal public HTTPS deployment link: [https://terraspot-harmonizer.vercel.app](https://terraspot-harmonizer.vercel.app) with unrestricted, zero-login access.
+  - Custom mission domain configuration via **GoDaddy Registry & Porkbun** NASA Global Offer (`https://terraspot-harmonizer.space`).
+  - STAC catalog integration declaration via **Microsoft Planetary Computer** NASA Global Offer.
+  - In-situ live fire weather telemetry integration declaration via **Meteomatics Weather API** NASA Global Offer.
+- **Visual Accessibility & Mobile Viewport Audits (`src/components/BurningCalendarMatrix.tsx` & `tests/accessibilityMobile.test.tsx`):**
+  - Responsive viewport coordinate clamping on floating telemetry tooltips preventing off-screen clipping on ultra-narrow viewports ($< 360\text{ px}$).
+  - Inverted tooltip vertical alignment (`translate(-50%, 0)`) when hovering top calendar rows to prevent clipping against the application header.
+  - WCAG 2.1 AA keyboard `Escape` dismissals and backdrop click traps validated with automated Vitest integration tests.
+- **Automated Regression & Optimization Testing Suite:**
+  - Added `tests/buildOptimization.test.ts` verifying chunk partitioning, HTML entry point, and strict $< 500\text{ kB}$ bundle size threshold.
+  - Added `tests/accessibilityMobile.test.tsx` verifying dialog landmarks and responsive keyboard accessibility.
+  - Total automated test suite expanded to **115 passing tests** across 17 test suites (100% pass rate).
 
 ---
 

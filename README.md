@@ -2,16 +2,18 @@
 
 [![NASA Space Apps 2026](https://img.shields.io/badge/NASA%20Space%20Apps-2026-0B3D91?style=for-the-badge&logo=nasa&logoColor=white)](https://www.spaceappschallenge.org/)
 [![Challenge 15](https://img.shields.io/badge/Challenge%2015-MODIS%20%26%20VIIRS%20Harmonization-FF6F00?style=for-the-badge)](https://www.spaceappschallenge.org/)
+[![Version](https://img.shields.io/badge/Version-0.11.0-emerald.svg?style=for-the-badge)](CHANGELOG.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 [![React 19](https://img.shields.io/badge/React-19.x-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-7.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-8.x%20Rolldown-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vite.dev/)
 [![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS-v4.0-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![pnpm](https://img.shields.io/badge/pnpm-12.x-F69220?style=for-the-badge&logo=pnpm&logoColor=white)](https://pnpm.io/)
-[![Vitest](https://img.shields.io/badge/Vitest-Unit%20Tests-729B1B?style=for-the-badge&logo=vitest&logoColor=white)](https://vitest.dev/)
+[![Vitest](https://img.shields.io/badge/Vitest-115%20Tests%20Passing-729B1B?style=for-the-badge&logo=vitest&logoColor=white)](https://vitest.dev/)
 
 > **Unified Multi-Decadal Burning Activity Calendar & Fire Regime Diagnostic Engine**  
-> Resolving the 27-year observation gap between NASA MODIS ($1\text{ km}$) and VIIRS ($375\text{ m}$) active fire records (2000–2026).
+> Resolving the 27-year observation gap between NASA MODIS ($1\text{ km}$) and VIIRS ($375\text{ m}$) active fire records (2000–2026).  
+> **Live Production URL (Requirement R8):** [https://terraspot-harmonizer.vercel.app](https://terraspot-harmonizer.vercel.app) *(Unauthenticated, public HTTPS access)*
 
 ---
 
@@ -104,6 +106,21 @@ All architectural contracts, scientific methodologies, and operational governanc
 | 📋 [`docs/operational-work-plan.md`](docs/operational-work-plan.md) | Comprehensive Work Plan, Master Control Matrix & Complete Spec Kit Prompts. |
 | 🔄 [`docs/workflow.md`](docs/workflow.md) | SDLC/SDD Matrix, GitHub Flow Model, Vitest, Husky Hooks & SemVer Protocol. |
 | 🛡️ [`AGENTS.md`](AGENTS.md) & [`CHANGELOG.md`](CHANGELOG.md) | Software Governance Rules & Semantic Versioning History. |
+
+---
+
+## 🌐 Public HTTPS Deployment & NASA Global Offers
+
+TerraSpot Harmonizer fully satisfies **NASA Space Apps Challenge 2026 Requirement R8** (universal, unauthenticated public web access without login paywalls):
+
+* 🚀 **Edge Production Hosting:** Deployed on Vercel Edge Network with static SPA rewrites, strict HSTS, and immutable asset caching.
+  * **Live Public URL:** [https://terraspot-harmonizer.vercel.app](https://terraspot-harmonizer.vercel.app)
+* 🌐 **Custom Mission Domain (GoDaddy Registry / Porkbun NASA Global Offer):**
+  * Configured for custom root apex routing at `https://terraspot-harmonizer.space` via automated SSL edge termination.
+* 🌦️ **Meteomatics Weather API (NASA Global Offer):**
+  * Automated high-resolution in-situ fire weather data fetch (`forest_fire_warning:idx`, 2m temperature, relative humidity, wind speed, evapotranspiration) cached client-side for immediate correlation with active hotspots.
+* 🪐 **Microsoft Planetary Computer (NASA Global Offer):**
+  * STAC metadata alignment and spatial bounding box formatting for seamless geospatial catalog discovery.
 
 ---
 

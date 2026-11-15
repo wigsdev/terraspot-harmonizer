@@ -1,8 +1,7 @@
 import React from 'react';
-import { Globe2, Satellite } from 'lucide-react';
+import { Globe2 } from 'lucide-react';
 import { LanguageProvider, RegionProvider, useLanguage, useRegion } from './context';
-import { Navbar } from './components/Navbar';
-import { KPISummaryCards } from './components/KPISummaryCards';
+import { Navbar, KPISummaryCards, MapAOISelector } from './components';
 
 const DashboardContent: React.FC = () => {
   const { language, t } = useLanguage();
@@ -20,50 +19,35 @@ const DashboardContent: React.FC = () => {
         {/* Executive 4-Card KPI Summary Panel */}
         <KPISummaryCards />
 
-        {/* Operational Workspace Readiness Card (awaiting T-06 Map & T-07 Calendar Matrix) */}
-        <section
-          aria-label="Active Area of Interest Telemetry Workspace"
-          className="bg-space-900 border border-space-800 rounded-xl overflow-hidden shadow-sm"
+        {/* Active AOI Spatial Status Strip */}
+        <div
+          data-testid="active-aoi-strip"
+          className="bg-space-900 border border-space-800 rounded-xl px-4 py-2.5 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs shadow-sm"
         >
-          {/* Active AOI Spatial Header Strip */}
-          <div className="bg-space-950/60 border-b border-space-800 px-4 py-2.5 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
-            <div className="flex items-center gap-2 flex-wrap min-w-0">
-              <Globe2 className="w-4 h-4 text-cyan-300 shrink-0" aria-hidden="true" />
-              <span className="font-semibold text-white" data-testid="active-aoi-name">
-                {regionName}
-              </span>
-              {countryName && (
-                <span className="text-slate-300 whitespace-nowrap">({countryName})</span>
-              )}
-            </div>
-
-            {bbox && (
-              <div className="inline-flex items-center gap-1.5 font-mono tabular-nums text-slate-300 whitespace-nowrap">
-                <span className="text-slate-400">BBox WGS84:</span>
-                <span data-testid="active-aoi-bbox" className="text-cyan-300 whitespace-nowrap">
-                  [{bbox.min_lat.toFixed(2)}, {bbox.min_lon.toFixed(2)}]{' '}
-                  {language === 'es' ? 'a' : 'to'} [{bbox.max_lat.toFixed(2)},{' '}
-                  {bbox.max_lon.toFixed(2)}]
-                </span>
-              </div>
+          <div className="flex items-center gap-2 flex-wrap min-w-0">
+            <Globe2 className="w-4 h-4 text-cyan-300 shrink-0" aria-hidden="true" />
+            <span className="font-semibold text-white" data-testid="active-aoi-name">
+              {regionName}
+            </span>
+            {countryName && (
+              <span className="text-slate-300 whitespace-nowrap">({countryName})</span>
             )}
           </div>
 
-          {/* Harmonization Workspace Readiness Body */}
-          <div className="p-5 sm:p-8 text-center space-y-3 sm:space-y-4">
-            <div className="inline-flex p-2.5 sm:p-3 bg-space-950 rounded-full border border-space-800 text-cyan-300">
-              <Satellite className="w-6 h-6 sm:w-8 sm:h-8" aria-hidden="true" />
+          {bbox && (
+            <div className="inline-flex items-center gap-1.5 font-mono tabular-nums text-slate-300 whitespace-nowrap">
+              <span className="text-slate-400">BBox WGS84:</span>
+              <span data-testid="active-aoi-bbox" className="text-cyan-300 whitespace-nowrap">
+                [{bbox.min_lat.toFixed(2)}, {bbox.min_lon.toFixed(2)}]{' '}
+                {language === 'es' ? 'a' : 'to'} [{bbox.max_lat.toFixed(2)},{' '}
+                {bbox.max_lon.toFixed(2)}]
+              </span>
             </div>
-            <h2 className="text-lg sm:text-xl font-bold text-white tracking-tight">
-              {language === 'es'
-                ? 'Centro de Control y Armonización Operativo'
-                : 'Mission Control Telemetry & Harmonization Active'}
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
-              {currentRegion?.description}
-            </p>
-          </div>
-        </section>
+          )}
+        </div>
+
+        {/* Interactive WebGIS Map AOI Selector & NASA GIBS Canvas (T-06) */}
+        <MapAOISelector />
       </main>
 
       <footer className="border-t border-space-800 bg-space-950 px-4 py-3 sm:px-6 sm:py-4 text-[11px] sm:text-xs text-slate-400">

@@ -209,9 +209,9 @@ Develop the interactive cartographic module with Leaflet (`MapAOISelector.tsx`) 
 4. Basemap switcher and satellite tile layer integration via **NASA EOSDIS GIBS (WMTS)** (MODIS/VIIRS corrected reflectance and thermal anomalies).
 
 **Acceptance Criteria:**
-- [ ] Drawing a bounding box or editing coordinate inputs triggers instant re-harmonization of the calendar matrix and charts for that area.
-- [ ] Quick-select buttons for the 5 benchmark study regions (Huánuco/Peru, Amazon Basin, Paraná Delta, California, Australia) with smooth map transitions (`flyToBounds`).
-- [ ] NASA GIBS satellite layers and hotspot markers render with informative contextual popups.
+- [x] Drawing a bounding box or editing coordinate inputs triggers instant re-harmonization of the calendar matrix and charts for that area.
+- [x] Quick-select buttons for the 5 benchmark study regions (Huánuco/Peru, Amazon Basin, Paraná Delta, California, Australia) with smooth map transitions (`flyToBounds`).
+- [x] NASA GIBS satellite layers and hotspot markers render with informative contextual popups.
 
 ---
 

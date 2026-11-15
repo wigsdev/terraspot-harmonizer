@@ -11,9 +11,28 @@ and this project adheres to [Semantic Versioning (SemVer 2.0.0)](https://semver.
 
 ### Planned
 
-- **Sprint 2 (`T-06`):** Interactive Leaflet WebGIS AOI canvas with custom bounding-box drawing and NASA GIBS WMTS satellite tile overlays.
 - **Sprint 3 (`T-07`, `T-08`, `T-09`, `T-10`):** 27-year × 12-month *Burning Activity Calendar Matrix*, climatological anomaly curves, sensor audit view, agricultural vs. wildfire regime classifier, and standardized CSV exporter/uploader.
 - **Sprint 4 (`T-11`, `T-12`):** Public HTTPS edge deployment, executive 7-slide presentation deck in English, and final `1.0.0` release.
+
+---
+
+## [0.6.0] - 2026-11-15
+
+### Added
+
+- **Interactive Cartographic WebGIS Module (`T-06`):** Implemented `src/components/MapAOISelector.tsx` using Leaflet and React-Leaflet, providing a full-featured cartographic workspace with smooth `flyToBounds` camera transitions across all 5 benchmark regions.
+- **NASA EOSDIS GIBS WMTS & Esri Dark Canvas Integration (`T-06`):** Implemented `src/engine/gibsLayers.ts` supporting Esri World Dark Gray Canvas basemap (open, zero-token, watermark-free) and dynamic WMTS tile overlays from NASA GIBS:
+  - MODIS Terra Corrected Reflectance True Color (`EPSG:3857`, Level 9).
+  - VIIRS SNPP Corrected Reflectance True Color (`EPSG:3857`, Level 9).
+  - Curated peak fire season reference dates per benchmark region (`2024-09-15` for Huánuco & Madre de Dios, `2020-09-09` for California, `2019-12-30` for NSW, and `2020-08-20` for Pantanal) ensuring cloud-free thermal scar visualization.
+- **Interactive Bounding Box Drawing Tool (`T-06`):** Implemented `BoundingBoxDrawHandler` in `src/components/MapAOISelector.tsx` with click-and-drag rectangle drawing, real-time coordinate synchronization across 4 numeric inputs (`min_lat`, `max_lat`, `min_lon`, `max_lon`), out-of-bounds validation, reset action, and client-side sub-second re-harmonization callback (`reharmonizeSpatialSubset`).
+- **Spatial Fire Cell Density Clusters ($0.01^\circ$ AFCD) (`T-06`):** Implemented `src/engine/spatialGrid.ts` (`filterCellsByBBox`, `getCellRectangleBounds`, `resolveCellStyle`) rendering active fire cells dynamically styled by mean Fire Radiative Power (MW) and the user's active accessible colorblind-safe palette (`inferno`, `viridis`, `cividis`, `diverging`), with dark aerospace popups detailing cell coordinates, cumulative AFCD, peak month, mean FRP, and night fraction.
+- **Bilingual Map Telemetry Strings (`T-06`):** Extended `src/types/language.ts` and `src/context/LanguageContext.tsx` with complete English and Spanish localized dictionaries for map controls, layer names, coordinate labels, and popup metadata.
+- **Automated Verification Suites (`T-06`):** Added `tests/MapAOISelector.test.tsx` (8 tests) and updated `tests/App.test.tsx` (3 tests), bringing the total test suite to 8 test files and 61/61 passing tests with 0 errors.
+
+### Changed
+
+- **Mission Workspace Layout (`T-06`):** Mounted `MapAOISelector` into `src/App.tsx` below `KPISummaryCards`, replacing the static operational readiness placeholder with the live interactive WebGIS canvas while preserving the active AOI spatial status header strip.
 
 ---
 

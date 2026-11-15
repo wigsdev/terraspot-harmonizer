@@ -1,7 +1,7 @@
 import React from 'react';
 import { Globe2 } from 'lucide-react';
 import { LanguageProvider, RegionProvider, useLanguage, useRegion } from './context';
-import { Navbar, KPISummaryCards, MapAOISelector } from './components';
+import { Navbar, KPISummaryCards, MapAOISelector, BurningCalendarMatrix } from './components';
 
 const DashboardContent: React.FC = () => {
   const { language, t } = useLanguage();
@@ -48,6 +48,9 @@ const DashboardContent: React.FC = () => {
 
         {/* Interactive WebGIS Map AOI Selector & NASA GIBS Canvas (T-06) */}
         <MapAOISelector />
+
+        {/* Interactive 27-Year Burning Activity Calendar Matrix (T-07) */}
+        <BurningCalendarMatrix />
       </main>
 
       <footer className="border-t border-space-800 bg-space-950 px-4 py-3 sm:px-6 sm:py-4 text-[11px] sm:text-xs text-slate-400">

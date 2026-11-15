@@ -60,4 +60,18 @@ describe('App Integration (T-05 Mission Navigation, KPIs & T-06 WebGIS Map)', ()
     expect(screen.getByTestId('kpi-card-afcd')).toHaveTextContent('86,714');
     expect(screen.getByTestId('input-min-lat')).toHaveValue(-37.5);
   });
+
+  it('renders BurningCalendarMatrix and reacts to analytical projection mode switching', () => {
+    render(<App />);
+
+    // BurningCalendarMatrix container exists
+    expect(screen.getByTestId('burning-calendar-matrix')).toBeInTheDocument();
+    expect(screen.getByTestId('year-label-2000')).toBeInTheDocument();
+    expect(screen.getByTestId('year-label-2026')).toBeInTheDocument();
+
+    // Mode toolbar toggles projection
+    const anomalyBtn = screen.getByTestId('mode-btn-anomaly');
+    fireEvent.click(anomalyBtn);
+    expect(anomalyBtn).toHaveAttribute('data-active', 'true');
+  });
 });

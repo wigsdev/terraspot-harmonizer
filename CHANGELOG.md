@@ -11,8 +11,37 @@ and this project adheres to [Semantic Versioning (SemVer 2.0.0)](https://semver.
 
 ### Planned
 
-- **Sprint 3 (`T-07`, `T-08`, `T-09`, `T-10`):** 27-year × 12-month *Burning Activity Calendar Matrix*, climatological anomaly curves, sensor audit view, agricultural vs. wildfire regime classifier, and standardized CSV exporter/uploader.
+- **Sprint 3 (`T-08`, `T-09`, `T-10`):** Climatological anomaly curves, sensor audit view, agricultural vs. wildfire regime classifier, and standardized CSV exporter/uploader.
 - **Sprint 4 (`T-11`, `T-12`):** Public HTTPS edge deployment, executive 7-slide presentation deck in English, and final `1.0.0` release.
+
+---
+
+## [0.7.0] - 2026-11-15
+
+### Added
+
+- **Interactive 27-Year Burning Activity Calendar Matrix (`T-07`):** Implemented `src/components/BurningCalendarMatrix.tsx` delivering the central scientific visualization mandated by NASA Space Apps Challenge 15 (Requirements R2, R4, R5, R6):
+  - High-density 27-row ($2000\text{--}2026$) by 12-month (Jan–Dec) semantic CSS Grid with 322 active monthly observation cells.
+  - Multi-era remote sensing brackets delineating `MODIS Solo Era` (2000–2011), `Dual-Sensor Fusion Era` (2012–2025), and `VIIRS Continuity Era` (2026) on the vertical axis.
+  - Right-margin annual cumulative sums ($H_{\text{annual}}$) with proportional visual mini-bars.
+  - Bottom-margin monthly baseline medians ($M_m$, 2001–2025 non-parametric climatology) and screen-reader accessibility labels.
+  - Future month safeguards: 2026 November and December automatically flagged (`isFutureMonth: true`), rendered with diagonal hatched stripes and labeled `N/A`, preventing baseline median skew.
+- **4-Mode Analytical Projection Switcher (`T-07`):**
+  - `Harmonized Hotspots`: Calibrated Active Fire Cell-Days ($H_{y,m}$) with inter-sensor bias correction.
+  - `Climatological Anomaly`: Percentage departure ($\Delta\%$) vs. 2001–2025 baseline median, featuring **automatic lock to the diverging Blue-White-Red color ramp** centered symmetrically at 0% departure.
+  - `Fire Radiative Power`: Mean combustion energy intensity (MW) distinguishing low-intensity agricultural clearing from catastrophic canopy megafires.
+  - `Raw Sensor Counts`: Uncalibrated raw MODIS C6.1 and VIIRS C2 detection counts with an integrated sensor audit notice highlighting the artificial threefold step-jump in 2012.
+- **Critical Anomaly Alert Indicators (`T-07`):** High-contrast pulsing alert badges ($P_{90}$ or robust $Z \ge 2.0$) identifying extreme fire events (e.g. California 2020, Amazon 2024).
+- **Aerospace Dark Telemetry Tooltips & Selection (`T-07`):** Floating aerospace dark tooltip upon cell hover/focus detailing formatted observation period, sensor regime, harmonized AFCD, raw MODIS/VIIRS counts, historical median, $\Delta\%$ departure, robust $Z$-score, mean FRP (MW), and nocturnal persistence fraction ($f_{\text{night}}$). Interactive cell click selection with cyan/amber focus ring and WAI-ARIA keyboard grid navigation (`ArrowUp`, `ArrowDown`, `ArrowLeft`, `ArrowRight`, `Enter`, `Space`).
+- **Calendar Matrix Computation Engine (`T-07`):** Implemented `src/engine/calendarMatrix.ts` (`generateMatrixGrid`, `computeRowSummaries`, `computeColumnSummaries`, `resolveCellVisual`) and domain types in `src/types/matrix.ts`.
+- **Bilingual Localization (`T-07`):** Added complete English and Spanish localized dictionaries in `src/types/language.ts` and `src/context/LanguageContext.tsx` for titles, view mode tooltips, sensor era tags, marginal labels, legend entries, and ARIA attributes.
+- **Comprehensive Verification Suite (`T-07`):** Added `tests/BurningCalendarMatrix.test.tsx` (9 tests) covering grid rendering, era partitions, marginal summaries, mode switching, diverging palette lock, critical badges, tooltips, selection, and keyboard navigation.
+- **Mobile & Tablet Responsive Polish (`T-07`):** Refactored header layout with non-wrapping badges, implemented a balanced 2×2 touch button grid on mobile/tablet viewports (`< lg`), added sticky Era and Year columns (`sticky left-0`) with elevation shadows to maintain chronological orientation during horizontal scrolling, and included localized horizontal scroll hints.
+- **Desktop 1024px Layout & Sensor Era Timeline Refinements (`T-07`):** Elevated side-by-side breakpoint to `xl:` ($1280\text{ px}$), deployed a spacious 4-column single-line toolbar (`lg:grid-cols-4`) on 1024px desktop viewports, standardized sensor era badges with uniform dimensions (`w-13 sm:w-14.5 h-5`) and continuous vertical timeline tracks for intra-era years, and adopted canonical Tailwind CSS v4 classes (`min-h-10.5`).
+
+### Changed
+
+- **Mission Workspace Shell Integration (`T-07`):** Mounted `BurningCalendarMatrix` into `src/App.tsx` below `MapAOISelector` and updated `tests/App.test.tsx`, achieving full spatiotemporal mission synchronization across KPIs, WebGIS map, and the 27-year matrix.
 
 ---
 
